@@ -1,0 +1,34 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Test\Fixture;
+
+use Cake\TestSuite\Fixture\TestFixture;
+
+/**
+ * OrganizationsFixture
+ */
+class OrganizationsFixture extends TestFixture
+{
+    /**
+     * Init method
+     *
+     * @return void
+     */
+    public function init(): void
+    {
+        $this->records = [
+            [
+                'id' => 1,
+                'name_of_organization' => 'Lorem ipsum dolor sit amet',
+                'exclusive_from' => '2025-03-30',
+                'exclusive_to' => '2025-03-30',
+                'number_of_hours' => 'Lorem ipsum dolor sit amet',
+                'position' => 'Lorem ipsum dolor sit amet',
+                'created' => '2025-03-30 10:05:56',
+                'modified' => '2025-03-30 10:05:56',
+            ],
+        ];
+        parent::init();
+    }
+}
