@@ -9,12 +9,13 @@ $(document).ready(function () {
     employees.forEach(function (employee, index) {
         table.row.add([
             index + 1,
-            `<input type="checkbox" class="department-checkbox" value="${employee.id}">`,
+            `<div style="display: flex; justify-content: center; margin-top: 10px;">
+            <input type="checkbox" class="department-checkbox" value="${employee.id}">
+            </div>`,
             employee.first_name,
             employee.middle_name,
             employee.last_name,
             employee.address,
-           
             employee.telephone_number,
             employee.mobile_number,
             employee.email,

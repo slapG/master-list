@@ -39,7 +39,8 @@ $cakeDescription = 'City Hall : Employee Management System';
         '/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css',
         '/adminlte/plugins/daterangepicker/daterangepicker.css',
         '/adminlte/plugins/summernote/summernote-bs4.min.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'
+        'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css',
+        'custom.css'
 
     ]) ?>
 

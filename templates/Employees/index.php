@@ -20,8 +20,8 @@
                 <h5  class="mx-auto" style="margin-top: 10px">List of Employee</h5>
               </div>
               <div class="card-body">
-                <table class="display table table-hover table-responsive table-bordered table-striped" id="employeesTable">
-                <thead>
+              <table class="display table table-hover table-responsive table-bordered table-striped" id="employeesTable">
+              <thead>
                 <tr>
                     <th>Count</th>
                     <th>Check Box</th>

@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-md navbar-light main-header" style="background: linear-gradient(45deg,rgb(223, 73, 32),rgb(19, 159, 167));">
     <div class="container">
         <!-- Brand Logo -->
-        <a href="<?= $this->Url->build('/employees') ?>" class="brand-link d-flex align-items-center">
+        <a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>" class="brand-link d-flex align-items-center">
             <img src="<?= $this->Url->assetUrl('/img/stgocitys.png'); ?>" alt="City Hall Logo" 
                  class="brand-image img-circle elevation-3" 
                  style="width: 40px; height: 40px; margin-right: 10px;">

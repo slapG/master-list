@@ -22,11 +22,21 @@ class EmployeesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'limit' => 1000000000,
-            'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Lnd', 'Organization', 'WorkExperience', 'OtherInformation', 'Speciality'],
-        ];
-        $employees = $this->paginate($this->Employees);
+        $employees = $this->Employees->find('all', [
+            'contain' => [
+                'FamilyBackground', 
+                'Elementary', 
+                'Secondary', 
+                'Vocational', 
+                'College', 
+                'Graduate', 
+                'Lnd', 
+                'Organization', 
+                'WorkExperience', 
+                'OtherInformation', 
+                'Speciality'
+            ]
+        ])->all();
 
         $this->set(compact('employees'));
     }
