@@ -48,7 +48,7 @@ class AppController extends Controller
         $this->loadComponent('Authentication.Authentication');
 
         // Allow unauthenticated access only to specific actions like login and add
-        $this->Authentication->allowUnauthenticated(['login, add']);
+        $this->Authentication->allowUnauthenticated(['login', 'add']);
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
