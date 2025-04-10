@@ -21,8 +21,8 @@ class DepartmentsFixture extends TestFixture
             [
                 'id' => 1,
                 'department' => 'Lorem ipsum dolor sit amet',
-                'created' => '2025-03-30 10:05:54',
-                'modified' => '2025-03-30 10:05:54',
+                'created' => '2025-04-02 08:27:46',
+                'modified' => '2025-04-02 08:27:46',
             ],
         ];
         parent::init();

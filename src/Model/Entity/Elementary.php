@@ -11,7 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $elementary_name
  * @property string|null $basic_education
- * @property \Cake\I18n\FrozenDate|null $period_of_attendance
+ * @property \Cake\I18n\FrozenDate|null $start_from
+ * @property \Cake\I18n\FrozenDate|null $end_to
  * @property \Cake\I18n\FrozenDate|null $year_graduated
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -32,7 +33,8 @@ class Elementary extends Entity
     protected $_accessible = [
         'elementary_name' => true,
         'basic_education' => true,
-        'period_of_attendance' => true,
+        'start_from' => true,
+        'end_to' => true,
         'year_graduated' => true,
         'created' => true,
         'modified' => true,

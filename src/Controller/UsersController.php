@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Http\Exception\UnauthorizedException;
+
 
 /**
  * Users Controller
@@ -11,6 +13,11 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        $this->viewBuilder()->setLayout('admin');
+    }
     /**
      * Index method
      *
@@ -82,7 +89,6 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
     }
-
     /**
      * Delete method
      *
@@ -101,5 +107,46 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+ 
+    public function login()
+    {
+        $this->viewBuilder()->setLayout('login');
+        $this->request->allowMethod(['get', 'post']);
+        $result = $this->Authentication->getResult();
+
+        if ($this->request->is('ajax')) {
+            if ($result && $result->isValid()) {
+                $this->response = $this->response->withType('json')
+                    ->withStringBody(json_encode(['status' => 'success', 'redirect' => true]));
+            } else {
+                $this->response = $this->response->withType('json')
+                    ->withStringBody(json_encode(['status' => 'error', 'redirect' => true]));
+            }
+            return $this->response;
+        }
+    }
+    public function logout()
+    {
+        $result = $this->Authentication->getResult();
+        if ($result && $result->isValid()) {
+            $this->Authentication->logout();
+
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+        }
+    }
+    public function profile()
+    {
+        $user = $this->request->getAttribute('identity');
+        if (!$user) {
+            throw new UnauthorizedException('You are not logged in.');
+        }
+
+        // Optional: Load more details from Users table
+        $this->loadModel('Users');
+        $userData = $this->Users->get($user->getIdentifier());
+
+        $this->set(compact('userData'));
     }
 }

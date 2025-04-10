@@ -14,8 +14,8 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('vocational_name') ?></th>
                     <th><?= $this->Paginator->sort('basic_education') ?></th>
-                    <th><?= $this->Paginator->sort('from') ?></th>
-                    <th><?= $this->Paginator->sort('to') ?></th>
+                    <th><?= $this->Paginator->sort('start_from') ?></th>
+                    <th><?= $this->Paginator->sort('end_to') ?></th>
                     <th><?= $this->Paginator->sort('year_graduated') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
@@ -28,8 +28,8 @@
                     <td><?= $this->Number->format($vocational->id) ?></td>
                     <td><?= h($vocational->vocational_name) ?></td>
                     <td><?= h($vocational->basic_education) ?></td>
-                    <td><?= h($vocational->from) ?></td>
-                    <td><?= h($vocational->to) ?></td>
+                    <td><?= h($vocational->start_from) ?></td>
+                    <td><?= h($vocational->end_to) ?></td>
                     <td><?= h($vocational->year_graduated) ?></td>
                     <td><?= h($vocational->created) ?></td>
                     <td><?= h($vocational->modified) ?></td>

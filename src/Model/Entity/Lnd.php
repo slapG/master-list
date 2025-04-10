@@ -17,6 +17,8 @@ use Cake\ORM\Entity;
  * @property string|null $conducted_by
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Employee[] $employees
  */
 class Lnd extends Entity
 {
@@ -38,5 +40,6 @@ class Lnd extends Entity
         'conducted_by' => true,
         'created' => true,
         'modified' => true,
+        'employees' => true,
     ];
 }

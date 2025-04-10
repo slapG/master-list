@@ -15,13 +15,13 @@ class Users extends AbstractMigration
     public function change(): void
     {
 
-        $table = $this->table('other_informations');
+        $table = $this->table('other_information');
         $table->addColumn('special_skill', 'text', ['null' => true])
             ->addColumn('non_academic_distinction', 'text', ['null' => true])
             ->addColumn('membership', 'text', ['null' => true])
             ->create();
 
-        $table = $this->table('lnds');
+        $table = $this->table('lnd');
         $table->addColumn('training_program', 'string', ['null' => true])
             ->addColumn('exclusive_from', 'date', ['null' => true])
             ->addColumn('exclusive_to', 'date', ['null' => true])
@@ -32,7 +32,7 @@ class Users extends AbstractMigration
             ->addColumn('modified', 'datetime')
             ->create();
 
-        $table = $this->table('organizations');
+        $table = $this->table('organization');
         $table->addColumn('name_of_organization', 'string', ['null' => true])
             ->addColumn('exclusive_from', 'date', ['null' => true])
             ->addColumn('exclusive_to', 'date', ['null' => true])
@@ -48,7 +48,7 @@ class Users extends AbstractMigration
             ->addColumn('modified', 'datetime')
             ->create();
 
-        $table = $this->table('work_experiences');
+        $table = $this->table('work_experience');
         $table->addColumn('start_from', 'string', ['null' => true])
             ->addColumn('upto', 'string', ['null' => true])
             ->addColumn('position', 'string', ['null' => true])
@@ -62,7 +62,7 @@ class Users extends AbstractMigration
             ->addForeignKey('department_id', 'departments', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
             ->create();
 
-        $table = $this->table('specialities');
+        $table = $this->table('speciality');
         $table->addColumn('speciality_laws', 'string', ['null' => true])
             ->addColumn('rating', 'string', ['null' => true])
             ->addColumn('date_of_examination', 'date', ['null' => true])
@@ -76,7 +76,8 @@ class Users extends AbstractMigration
         $table = $this->table('elementary');
         $table->addColumn('elementary_name', 'string', ['null' => true])
             ->addColumn('basic_education', 'string', ['null' => true])
-            ->addColumn('period_of_attendance', 'date', ['null' => true])
+            ->addColumn('start_from', 'date', ['null' => true])
+            ->addColumn('end_to', 'date', ['null' => true])
             ->addColumn('year_graduated', 'date', ['null' => true])
             ->addColumn('created', 'datetime')
             ->addColumn('modified', 'datetime')
@@ -131,7 +132,7 @@ class Users extends AbstractMigration
             ->create();
 
         $table = $this->table('family_background');
-        $table->addColumn('family_background', 'string')
+        $table->addColumn('family_background', 'string', ['null' => true])
             ->addColumn('spouse_name', 'string', ['null' => true])
             ->addColumn('first_name', 'string', ['null' => true])
             ->addColumn('middle_name', 'string', ['null' => true])
@@ -180,11 +181,11 @@ class Users extends AbstractMigration
             ->addColumn('vocational_id', 'integer')
             ->addColumn('college_id', 'integer')
             ->addColumn('graduate_id', 'integer')
-            ->addColumn('lnds_id', 'integer')
-            ->addColumn('organizations_id', 'integer')
-            ->addColumn('work_experiences_id', 'integer')
-            ->addColumn('other_informations_id', 'integer')
-            ->addColumn('specialities_id', 'integer')
+            ->addColumn('lnd_id', 'integer')
+            ->addColumn('organization_id', 'integer')
+            ->addColumn('work_experience_id', 'integer')
+            ->addColumn('other_information_id', 'integer')
+            ->addColumn('speciality_id', 'integer')
             ->addColumn('created', 'datetime')
             ->addColumn('modified', 'datetime')
             ->addForeignKey('family_background_id', 'family_background', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
@@ -193,11 +194,11 @@ class Users extends AbstractMigration
             ->addForeignKey('vocational_id', 'vocational', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
             ->addForeignKey('college_id', 'college', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
             ->addForeignKey('graduate_id', 'graduate', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
-            ->addForeignKey('lnds_id', 'lnds', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
-            ->addForeignKey('organizations_id', 'organizations', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
-            ->addForeignKey('work_experiences_id', 'work_experiences', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
-            ->addForeignKey('other_informations_id', 'other_informations', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
-            ->addForeignKey('specialities_id', 'specialities', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])          
+            ->addForeignKey('lnd_id', 'lnd', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
+            ->addForeignKey('organization_id', 'organization', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
+            ->addForeignKey('work_experience_id', 'work_experience', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
+            ->addForeignKey('other_information_id', 'other_information', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
+            ->addForeignKey('speciality_id', 'speciality', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])          
             ->create();
     }
 }

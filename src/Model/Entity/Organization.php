@@ -16,6 +16,8 @@ use Cake\ORM\Entity;
  * @property string|null $position
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Employee[] $employees
  */
 class Organization extends Entity
 {
@@ -36,5 +38,6 @@ class Organization extends Entity
         'position' => true,
         'created' => true,
         'modified' => true,
+        'employees' => true,
     ];
 }

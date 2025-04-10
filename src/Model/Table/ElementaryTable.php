@@ -71,8 +71,12 @@ class ElementaryTable extends Table
             ->allowEmptyString('basic_education');
 
         $validator
-            ->date('period_of_attendance')
-            ->allowEmptyDate('period_of_attendance');
+            ->date('start_from')
+            ->allowEmptyDate('start_from');
+
+        $validator
+            ->date('end_to')
+            ->allowEmptyDate('end_to');
 
         $validator
             ->date('year_graduated')

@@ -71,12 +71,12 @@ class GraduateTable extends Table
             ->allowEmptyString('basic_education');
 
         $validator
-            ->date('from')
-            ->allowEmptyDate('from');
+            ->date('start_from')
+            ->allowEmptyDate('start_from');
 
         $validator
-            ->date('to')
-            ->allowEmptyDate('to');
+            ->date('end_to')
+            ->allowEmptyDate('end_to');
 
         $validator
             ->date('year_graduated')

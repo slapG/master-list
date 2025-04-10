@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'Expenses System';
+$cakeDescription = 'City Hall : Employee Management System';
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,6 +25,7 @@ $cakeDescription = 'Expenses System';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+    <?= $this->Html->meta('csrfToken', $this->request->getAttribute('csrfToken')) ?>
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css([
@@ -37,22 +38,22 @@ $cakeDescription = 'Expenses System';
         '/adminlte/dist/css/adminlte.min.css',
         '/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css',
         '/adminlte/plugins/daterangepicker/daterangepicker.css',
-        '/adminlte/plugins/summernote/summernote-bs4.min.css'
+        '/adminlte/plugins/summernote/summernote-bs4.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'
+
     ]) ?>
+
+    <?= $this->Html->script('https://cdn.jsdelivr.net/npm/chart.js')?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 
 
-<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
-
+<body class="hold-transition layout-top-nav">
+<?= $this->Flash->render() ?>
 <div class="wrapper">
-
 <?= $this->element('admin/navbar')?>
-
-<?= $this->element('admin/sidebar')?>
-
 <div class="content-wrapper">
 <?= $this->fetch('admin/header') ?>
 <section class="content">
@@ -60,8 +61,6 @@ $cakeDescription = 'Expenses System';
 </section>
 </div>
 <?= $this->element('admin/footer')?>
-<aside class="controll-sidebar controll-sidebar-dark">
-</aside>
 </div>
     <?=$this->Html->script([
         '/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js',
@@ -81,7 +80,10 @@ $cakeDescription = 'Expenses System';
         '/adminlte/plugins/jquery/jquery.min.js',
         '/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js',
         '/adminlte/dist/js/adminlte.min.js',
-        '/adminlte/dist/js/demo.js'
+        '/adminlte/dist/js/demo.js',
+        '/adminlte/plugins/datatables/jquery.dataTables.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js',
+        'https://cdn.jsdelivr.net/npm/sweetalert2@11'
     ])?>
 </body>
 </html>

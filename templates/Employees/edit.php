@@ -8,70 +8,574 @@
  * @var string[]|\Cake\Collection\CollectionInterface $vocational
  * @var string[]|\Cake\Collection\CollectionInterface $college
  * @var string[]|\Cake\Collection\CollectionInterface $graduate
- * @var string[]|\Cake\Collection\CollectionInterface $specialities
- * @var string[]|\Cake\Collection\CollectionInterface $lnds
- * @var string[]|\Cake\Collection\CollectionInterface $organizations
- * @var string[]|\Cake\Collection\CollectionInterface $workExperiences
- * @var string[]|\Cake\Collection\CollectionInterface $otherInformations
- * @var string[]|\Cake\Collection\CollectionInterface $departments
+ * @var string[]|\Cake\Collection\CollectionInterface $lnd
+ * @var string[]|\Cake\Collection\CollectionInterface $organization
+ * @var string[]|\Cake\Collection\CollectionInterface $workExperience
+ * @var string[]|\Cake\Collection\CollectionInterface $otherInformation
+ * @var string[]|\Cake\Collection\CollectionInterface $speciality
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $employee->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Employees'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="employees form content">
+<section class="content">
+      <div class="row">
+        <div class="col-md-11 my-2 mx-auto">
+          <div class="card">
+            <div class="card-header">
             <?= $this->Form->create($employee) ?>
-            <fieldset>
-                <legend><?= __('Edit Employee') ?></legend>
-                <?php
-                    echo $this->Form->control('first_name');
-                    echo $this->Form->control('middle_name');
-                    echo $this->Form->control('last_name');
-                    echo $this->Form->control('address');
-                    echo $this->Form->control('place_of_birth');
-                    echo $this->Form->control('date_of_birth');
-                    echo $this->Form->control('sex');
-                    echo $this->Form->control('civil_status');
-                    echo $this->Form->control('height');
-                    echo $this->Form->control('weight');
-                    echo $this->Form->control('blood_type');
-                    echo $this->Form->control('gsis_number');
-                    echo $this->Form->control('pagibig_number');
-                    echo $this->Form->control('philhealth_number');
-                    echo $this->Form->control('sss_number');
-                    echo $this->Form->control('tin_number');
-                    echo $this->Form->control('agency_employee_number');
-                    echo $this->Form->control('citizenship');
-                    echo $this->Form->control('residential_address');
-                    echo $this->Form->control('permanent_address');
-                    echo $this->Form->control('telephone_number');
-                    echo $this->Form->control('mobile_number');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('family_background_id', ['options' => $familyBackground]);
-                    echo $this->Form->control('elementary_id', ['options' => $elementary]);
-                    echo $this->Form->control('secondary_id', ['options' => $secondary]);
-                    echo $this->Form->control('vocational_id', ['options' => $vocational]);
-                    echo $this->Form->control('college_id', ['options' => $college]);
-                    echo $this->Form->control('graduate_id', ['options' => $graduate]);
-                    echo $this->Form->control('lnds_id', ['options' => $lnds]);
-                    echo $this->Form->control('organizations_id', ['options' => $organizations]);
-                    echo $this->Form->control('work_experiences_id', ['options' => $workExperiences]);
-                    echo $this->Form->control('other_informations_id', ['options' => $otherInformations]);
-                    echo $this->Form->control('specialities_id');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <h3 class="card-title"><?=__('Add Employee')?></h3>
+              <div class="card-tools">
+                <button type="button"  class="btn btn-tool float-right" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+            <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">I. Personal Information</h2>
+                </div>
+            <div class="row">
+                    <div class="col-md-3">
+                        <?= $this->Form->label('first_name') ?>
+                        <?= $this->Form->input('first_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('middle_name') ?>
+                        <?= $this->Form->input('middle_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('last_name') ?>
+                        <?= $this->Form->input('last_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->control('date_of_birth',[
+                            'type' => 'date',
+                            'label' => 'Date of Birth',
+                            'value' => $employee->date_of_birth ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('address') ?>
+                        <?= $this->Form->input('address', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('place_of_birth') ?>
+                        <?= $this->Form->input('place_of_birth', ['class' => 'form-control', ]) ?>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <?= $this->Form->label('sex') ?>
+                        <?= $this->Form->select('sex',['Male' => 'Male', 'Female' => 'Female'], [
+                            'class' => 'form-control',
+                            ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('civil_status') ?>
+                        <?= $this->Form->input('civil_status', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label(ucwords('height (cm)')) ?>
+                        <?= $this->Form->input('height', [
+                            'class' => 'form-control',
+                            'type' => 'number',
+                            
+                            ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label(ucwords('weight (kg)')) ?>
+                        <?= $this->Form->input('weight', [
+                            'class' => 'form-control',
+                            'type' => 'number',
+                            
+                             ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('blood_type') ?>
+                        <?= $this->Form->input('blood_type', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('gsis_number') ?>
+                        <?= $this->Form->input('gsis_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('pagibig_number') ?>
+                        <?= $this->Form->input('pagibig_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('philhealth_number') ?>
+                        <?= $this->Form->input('philhealth_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('sss_number') ?>
+                        <?= $this->Form->input('sss_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('tin_number') ?>
+                        <?= $this->Form->input('tin_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('agency_employee_number') ?>
+                        <?= $this->Form->input('agency_employee_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('citizenship') ?>
+                        <?= $this->Form->input('citizenship', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('residential_address') ?>
+                        <?= $this->Form->input('residential_address', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('permanent_address') ?>
+                        <?= $this->Form->input('permanent_address', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('telephone_number') ?>
+                        <?= $this->Form->input('telephone_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('mobile_number') ?>
+                        <?= $this->Form->input('mobile_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('email') ?>
+                        <?= $this->Form->input('email', ['class' => 'form-control', ]) ?>
+                    </div>
+                </div>
+              
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">II. Family Background</h2>
+                </div>
+
+          
+                <div class="row">
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.first_name', 'Spouse First Name') ?>
+                        <?= $this->Form->input('family_background.first_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.middle_name', 'Spouse Middle Name') ?>
+                        <?= $this->Form->input('family_background.middle_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.last_name', 'Spouse Last Name') ?>
+                        <?= $this->Form->input('family_background.last_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.occupation') ?>
+                        <?= $this->Form->input('family_background.occupation', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.employer_business_name') ?>
+                        <?= $this->Form->input('family_background.employer_business_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.business_address') ?>
+                        <?= $this->Form->input('family_background.business_address', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.telephone_number') ?>
+                        <?= $this->Form->input('family_background.telephone_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.father_surname') ?>
+                        <?= $this->Form->input('family_background.father_surname', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.father_first_name') ?>
+                        <?= $this->Form->input('family_background.father_first_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.father_middle_name') ?>
+                        <?= $this->Form->input('family_background.father_middle_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.mother_maiden_name') ?>
+                        <?= $this->Form->input('family_background.mother_maiden_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.mother_first_name') ?>
+                        <?= $this->Form->input('family_background.mother_first_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.mother_middle_name') ?>
+                        <?= $this->Form->input('family_background.mother_middle_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">III. Educational Background</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('elementary.elementary_name') ?>
+                        <?= $this->Form->input('elementary.elementary_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('elementary.basic_education') ?>
+                        <?= $this->Form->input('elementary.basic_education', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->elementary->start_from ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->elementary->end_to ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->elementary->year_graduated ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h3 class="text-2xl font-bold"></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('secondary.secondary_name') ?>
+                        <?= $this->Form->input('secondary.secondary_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('secondary.basic_education') ?>
+                        <?= $this->Form->input('secondary.basic_education', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->secondary->start_from ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->secondary->end_to ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->secondary->year_graduated ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h3 class="text-2xl font-bold"></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('vocational.vocational_name') ?>
+                        <?= $this->Form->input('vocational.vocational_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('vocational.basic_education') ?>
+                        <?= $this->Form->input('vocational.basic_education', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->vocational->start_from ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->vocational->end_to ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->vocational->year_graduated ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h3 class="text-2xl font-bold"></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('college.college_name') ?>
+                        <?= $this->Form->input('college.college_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('college.basic_education') ?>
+                        <?= $this->Form->input('college.basic_education', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->college->start_from ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->college->end_to ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->college->year_graduated ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold"></h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('graduate.graduate_name') ?>
+                        <?= $this->Form->input('graduate.graduate_name', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('graduate.basic_education') ?>
+                        <?= $this->Form->input('graduate.basic_education', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->graduate->start_from ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->graduate->end_to ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->graduate->year_graduated ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">IV. Specialities</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.speciality_laws') ?>
+                        <?= $this->Form->input('speciality.speciality_laws', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.rating') ?>
+                        <?= $this->Form->input('speciality.rating', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Date Of Examination',[
+                            'type' => 'date',
+                            'label' => 'Date OF Examination',
+                            'value' => $employee->speciality->date_of_examination ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.place_of_examination') ?>
+                        <?= $this->Form->input('speciality.place_of_examination', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.license_number') ?>
+                        <?= $this->Form->input('speciality.license_number', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Date Of Validity',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->speciality->date_of_validity ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">V. Work Experiences</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->control('work_experience.start_from', [
+                            'type' => 'date', 
+                            'label' => 'Start From',
+                            'value' => $employee->work_experience->start_from ?? null,
+                            'class' => 'form-control', 
+                            ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('work_experience.upto', [
+                            'type' => 'date', 
+                            'label' => 'Up To',
+                            'value' => $employee->work_experience->upto ?? null,
+                            'class' => 'form-control', 
+                            ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.position') ?>
+                        <?= $this->Form->input('work_experience.position', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.department_id') ?>
+                        <?= $this->Form->select('Departments', $departments, ['class' => 'form-control' , ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.monthly_salary') ?>
+                        <?= $this->Form->input('work_experience.monthly_salary', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.salary_grade') ?>
+                        <?= $this->Form->input('work_experience.salary_grade', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.status_of_appointment') ?>
+                        <?= $this->Form->input('work_experience.status_of_appointment', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.government_service') ?>
+                        <?= $this->Form->input('work_experience.government_service', ['class' => 'form-control', ]) ?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">VI. Organizations</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('organization.name_of_organization') ?>
+                        <?= $this->Form->input('organization.name_of_organization', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Exclusive From',[
+                            'type' => 'date',
+                            'label' => 'Exclusive From',
+                            'value' => $employee->organization->exclusive_from ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Exclusive To',[
+                            'type' => 'date',
+                            'label' => 'Exclusive To',
+                            'value' => $employee->organization->exclusive_to ?? null,
+                            'class' => 'form-control', 
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('organization.number_of_hours') ?>
+                        <?= $this->Form->input('organization.number_of_hours', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('organization.position') ?>
+                        <?= $this->Form->input('organization.position', ['class' => 'form-control', ]) ?>
+                    </div>
+                </div>
+
+                
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">VII. Learning and Development</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.training_program') ?>
+                        <?= $this->Form->input('lnd.training_program', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('lnd.exclusive_from', [
+                            'type' => 'date',
+                            'label' => 'Exclusive From',
+                            'value' => $employee->lnd->exclusive_from ?? null,
+                            'class' => 'form-control', 
+                        ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('lnd.exclusive_to', [
+                            'type' => 'date',
+                            'label' => 'Exclusive To',
+                            'value' => $employee->lnd->exclusive_to ?? null,
+                            'class' => 'form-control', 
+                        ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.number_of_hours') ?>
+                        <?= $this->Form->input('lnd.number_of_hours', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.type') ?>
+                        <?= $this->Form->input('lnd.type', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.conducted_by') ?>
+                        <?= $this->Form->input('lnd.conducted_by', ['class' => 'form-control', ]) ?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">VIII. Other Informations</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('other_information.special_skill') ?>
+                        <?= $this->Form->input('other_information.special_skill', ['class' => 'form-control', ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('other_information.non_academic_distinction') ?>
+                        <?= $this->Form->input('other_information.non_academic_distinction', ['class' => 'form-control', ]) ?>
+                    </div>
+                </div>
+            <div class="card-body">
+            <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-primary float-right ">Back</a>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success float-right mr-2']) ?>
             <?= $this->Form->end() ?>
+                </div>
+            </div>
         </div>
-    </div>
-</div>

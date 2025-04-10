@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Departments Model
  *
- * @property \App\Model\Table\WorkExperiencesTable&\Cake\ORM\Association\HasMany $WorkExperiences
+ * @property \App\Model\Table\WorkExperienceTable&\Cake\ORM\Association\HasMany $WorkExperience
  *
  * @method \App\Model\Entity\Department newEmptyEntity()
  * @method \App\Model\Entity\Department newEntity(array $data, array $options = [])
@@ -42,12 +42,12 @@ class DepartmentsTable extends Table
         parent::initialize($config);
 
         $this->setTable('departments');
-        $this->setDisplayField('id');
+        $this->setDisplayField('department');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('WorkExperiences', [
+        $this->hasMany('WorkExperience', [
             'foreignKey' => 'department_id',
         ]);
     }

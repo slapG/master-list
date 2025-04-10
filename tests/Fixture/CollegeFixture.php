@@ -28,11 +28,11 @@ class CollegeFixture extends TestFixture
                 'id' => 1,
                 'college_name' => 'Lorem ipsum dolor sit amet',
                 'basic_education' => 'Lorem ipsum dolor sit amet',
-                'from' => '2025-03-30',
-                'to' => '2025-03-30',
-                'year_graduated' => '2025-03-30',
-                'created' => '2025-03-30 10:05:53',
-                'modified' => '2025-03-30 10:05:53',
+                'start_from' => '2025-04-02',
+                'end_to' => '2025-04-02',
+                'year_graduated' => '2025-04-02',
+                'created' => '2025-04-02 08:27:42',
+                'modified' => '2025-04-02 08:27:42',
             ],
         ];
         parent::init();

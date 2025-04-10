@@ -29,12 +29,11 @@ class EmployeesControllerTest extends TestCase
         'app.Vocational',
         'app.College',
         'app.Graduate',
-        'app.Specialities',
-        'app.Lnds',
-        'app.Organizations',
-        'app.WorkExperiences',
-        'app.OtherInformations',
-        'app.Departments',
+        'app.Lnd',
+        'app.Organization',
+        'app.WorkExperience',
+        'app.OtherInformation',
+        'app.Speciality',
     ];
 
     /**

@@ -14,7 +14,8 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('elementary_name') ?></th>
                     <th><?= $this->Paginator->sort('basic_education') ?></th>
-                    <th><?= $this->Paginator->sort('period_of_attendance') ?></th>
+                    <th><?= $this->Paginator->sort('start_from') ?></th>
+                    <th><?= $this->Paginator->sort('end_to') ?></th>
                     <th><?= $this->Paginator->sort('year_graduated') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
@@ -27,7 +28,8 @@
                     <td><?= $this->Number->format($elementary->id) ?></td>
                     <td><?= h($elementary->elementary_name) ?></td>
                     <td><?= h($elementary->basic_education) ?></td>
-                    <td><?= h($elementary->period_of_attendance) ?></td>
+                    <td><?= h($elementary->start_from) ?></td>
+                    <td><?= h($elementary->end_to) ?></td>
                     <td><?= h($elementary->year_graduated) ?></td>
                     <td><?= h($elementary->created) ?></td>
                     <td><?= h($elementary->modified) ?></td>

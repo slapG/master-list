@@ -36,14 +36,14 @@
                 </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Work Experiences') ?></h4>
-                <?php if (!empty($department->work_experiences)) : ?>
+                <h4><?= __('Related Work Experience') ?></h4>
+                <?php if (!empty($department->work_experience)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
                             <th><?= __('Id') ?></th>
-                            <th><?= __('From') ?></th>
-                            <th><?= __('To') ?></th>
+                            <th><?= __('Start From') ?></th>
+                            <th><?= __('Upto') ?></th>
                             <th><?= __('Position') ?></th>
                             <th><?= __('Department Id') ?></th>
                             <th><?= __('Monthly Salary') ?></th>
@@ -54,23 +54,23 @@
                             <th><?= __('Modified') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
-                        <?php foreach ($department->work_experiences as $workExperiences) : ?>
+                        <?php foreach ($department->work_experience as $workExperience) : ?>
                         <tr>
-                            <td><?= h($workExperiences->id) ?></td>
-                            <td><?= h($workExperiences->from) ?></td>
-                            <td><?= h($workExperiences->to) ?></td>
-                            <td><?= h($workExperiences->position) ?></td>
-                            <td><?= h($workExperiences->department_id) ?></td>
-                            <td><?= h($workExperiences->monthly_salary) ?></td>
-                            <td><?= h($workExperiences->salary_grade) ?></td>
-                            <td><?= h($workExperiences->status_of_appointment) ?></td>
-                            <td><?= h($workExperiences->government_service) ?></td>
-                            <td><?= h($workExperiences->created) ?></td>
-                            <td><?= h($workExperiences->modified) ?></td>
+                            <td><?= h($workExperience->id) ?></td>
+                            <td><?= h($workExperience->start_from) ?></td>
+                            <td><?= h($workExperience->upto) ?></td>
+                            <td><?= h($workExperience->position) ?></td>
+                            <td><?= h($workExperience->department_id) ?></td>
+                            <td><?= h($workExperience->monthly_salary) ?></td>
+                            <td><?= h($workExperience->salary_grade) ?></td>
+                            <td><?= h($workExperience->status_of_appointment) ?></td>
+                            <td><?= h($workExperience->government_service) ?></td>
+                            <td><?= h($workExperience->created) ?></td>
+                            <td><?= h($workExperience->modified) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'WorkExperiences', 'action' => 'view', $workExperiences->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'WorkExperiences', 'action' => 'edit', $workExperiences->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'WorkExperiences', 'action' => 'delete', $workExperiences->id], ['confirm' => __('Are you sure you want to delete # {0}?', $workExperiences->id)]) ?>
+                                <?= $this->Html->link(__('View'), ['controller' => 'WorkExperience', 'action' => 'view', $workExperience->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'WorkExperience', 'action' => 'edit', $workExperience->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'WorkExperience', 'action' => 'delete', $workExperience->id], ['confirm' => __('Are you sure you want to delete # {0}?', $workExperience->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

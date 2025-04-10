@@ -44,6 +44,12 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
+        // Load the Authentication component
+        $this->loadComponent('Authentication.Authentication');
+
+        // Allow unauthenticated access only to specific actions like login and add
+        $this->Authentication->allowUnauthenticated(['login']);
+
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html

@@ -24,7 +24,8 @@
                 <?php
                     echo $this->Form->control('elementary_name');
                     echo $this->Form->control('basic_education');
-                    echo $this->Form->control('period_of_attendance', ['empty' => true]);
+                    echo $this->Form->control('start_from', ['empty' => true]);
+                    echo $this->Form->control('end_to', ['empty' => true]);
                     echo $this->Form->control('year_graduated', ['empty' => true]);
                 ?>
             </fieldset>

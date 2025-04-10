@@ -31,12 +31,12 @@
                     <td><?= $this->Number->format($graduate->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('From') ?></th>
-                    <td><?= h($graduate->from) ?></td>
+                    <th><?= __('Start From') ?></th>
+                    <td><?= h($graduate->start_from) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('To') ?></th>
-                    <td><?= h($graduate->to) ?></td>
+                    <th><?= __('End To') ?></th>
+                    <td><?= h($graduate->end_to) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Year Graduated') ?></th>
@@ -87,13 +87,11 @@
                             <th><?= __('Vocational Id') ?></th>
                             <th><?= __('College Id') ?></th>
                             <th><?= __('Graduate Id') ?></th>
+                            <th><?= __('Lnd Id') ?></th>
+                            <th><?= __('Organization Id') ?></th>
+                            <th><?= __('Work Experience Id') ?></th>
+                            <th><?= __('Other Information Id') ?></th>
                             <th><?= __('Speciality Id') ?></th>
-                            <th><?= __('Lnds Id') ?></th>
-                            <th><?= __('Organizations Id') ?></th>
-                            <th><?= __('Work Experiences Id') ?></th>
-                            <th><?= __('Other Informations Id') ?></th>
-                            <th><?= __('Departments Id') ?></th>
-                            <th><?= __('Specialities Id') ?></th>
                             <th><?= __('Created') ?></th>
                             <th><?= __('Modified') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -130,13 +128,11 @@
                             <td><?= h($employees->vocational_id) ?></td>
                             <td><?= h($employees->college_id) ?></td>
                             <td><?= h($employees->graduate_id) ?></td>
+                            <td><?= h($employees->lnd_id) ?></td>
+                            <td><?= h($employees->organization_id) ?></td>
+                            <td><?= h($employees->work_experience_id) ?></td>
+                            <td><?= h($employees->other_information_id) ?></td>
                             <td><?= h($employees->speciality_id) ?></td>
-                            <td><?= h($employees->lnds_id) ?></td>
-                            <td><?= h($employees->organizations_id) ?></td>
-                            <td><?= h($employees->work_experiences_id) ?></td>
-                            <td><?= h($employees->other_informations_id) ?></td>
-                            <td><?= h($employees->departments_id) ?></td>
-                            <td><?= h($employees->specialities_id) ?></td>
                             <td><?= h($employees->created) ?></td>
                             <td><?= h($employees->modified) ?></td>
                             <td class="actions">

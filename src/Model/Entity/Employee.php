@@ -38,11 +38,11 @@ use Cake\ORM\Entity;
  * @property int $vocational_id
  * @property int $college_id
  * @property int $graduate_id
- * @property int $lnds_id
- * @property int $organizations_id
- * @property int $work_experiences_id
- * @property int $other_informations_id
- * @property int $specialities_id
+ * @property int $lnd_id
+ * @property int $organization_id
+ * @property int $work_experience_id
+ * @property int $other_information_id
+ * @property int $speciality_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -52,12 +52,11 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Vocational $vocational
  * @property \App\Model\Entity\College $college
  * @property \App\Model\Entity\Graduate $graduate
- * @property \App\Model\Entity\Speciality $speciality
  * @property \App\Model\Entity\Lnd $lnd
  * @property \App\Model\Entity\Organization $organization
  * @property \App\Model\Entity\WorkExperience $work_experience
  * @property \App\Model\Entity\OtherInformation $other_information
- * @property \App\Model\Entity\Department $department
+ * @property \App\Model\Entity\Speciality $speciality
  */
 class Employee extends Entity
 {
@@ -100,11 +99,11 @@ class Employee extends Entity
         'vocational_id' => true,
         'college_id' => true,
         'graduate_id' => true,
-        'lnds_id' => true,
-        'organizations_id' => true,
-        'work_experiences_id' => true,
-        'other_informations_id' => true,
-        'specialities_id' => true,
+        'lnd_id' => true,
+        'organization_id' => true,
+        'work_experience_id' => true,
+        'other_information_id' => true,
+        'speciality_id' => true,
         'created' => true,
         'modified' => true,
         'family_background' => true,
@@ -113,11 +112,10 @@ class Employee extends Entity
         'vocational' => true,
         'college' => true,
         'graduate' => true,
-        'speciality' => true,
         'lnd' => true,
         'organization' => true,
         'work_experience' => true,
         'other_information' => true,
-        'department' => true,
+        'speciality' => true,
     ];
 }

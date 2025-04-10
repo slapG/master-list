@@ -24,8 +24,8 @@
                 <?php
                     echo $this->Form->control('vocational_name');
                     echo $this->Form->control('basic_education');
-                    echo $this->Form->control('from', ['empty' => true]);
-                    echo $this->Form->control('to', ['empty' => true]);
+                    echo $this->Form->control('start_from', ['empty' => true]);
+                    echo $this->Form->control('end_to', ['empty' => true]);
                     echo $this->Form->control('year_graduated', ['empty' => true]);
                 ?>
             </fieldset>

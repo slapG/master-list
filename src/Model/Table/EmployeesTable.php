@@ -17,11 +17,11 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\VocationalTable&\Cake\ORM\Association\BelongsTo $Vocational
  * @property \App\Model\Table\CollegeTable&\Cake\ORM\Association\BelongsTo $College
  * @property \App\Model\Table\GraduateTable&\Cake\ORM\Association\BelongsTo $Graduate
- * @property \App\Model\Table\LndsTable&\Cake\ORM\Association\BelongsTo $Lnds
- * @property \App\Model\Table\OrganizationsTable&\Cake\ORM\Association\BelongsTo $Organizations
- * @property \App\Model\Table\WorkExperiencesTable&\Cake\ORM\Association\BelongsTo $WorkExperiences
- * @property \App\Model\Table\OtherInformationsTable&\Cake\ORM\Association\BelongsTo $OtherInformations
- * @property \App\Model\Table\SpecialitiesTable&\Cake\ORM\Association\BelongsTo $Specialities
+ * @property \App\Model\Table\LndTable&\Cake\ORM\Association\BelongsTo $Lnd
+ * @property \App\Model\Table\OrganizationTable&\Cake\ORM\Association\BelongsTo $Organization
+ * @property \App\Model\Table\WorkExperienceTable&\Cake\ORM\Association\BelongsTo $WorkExperience
+ * @property \App\Model\Table\OtherInformationTable&\Cake\ORM\Association\BelongsTo $OtherInformation
+ * @property \App\Model\Table\SpecialityTable&\Cake\ORM\Association\BelongsTo $Speciality
  *
  * @method \App\Model\Entity\Employee newEmptyEntity()
  * @method \App\Model\Entity\Employee newEntity(array $data, array $options = [])
@@ -81,24 +81,28 @@ class EmployeesTable extends Table
             'foreignKey' => 'graduate_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Lnds', [
-            'foreignKey' => 'lnds_id',
+        $this->belongsTo('Lnd', [
+            'foreignKey' => 'lnd_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Organizations', [
-            'foreignKey' => 'organizations_id',
+        $this->belongsTo('Organization', [
+            'foreignKey' => 'organization_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('WorkExperiences', [
-            'foreignKey' => 'work_experiences_id',
+        $this->belongsTo('WorkExperience', [
+            'foreignKey' => 'work_experience_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('OtherInformations', [
-            'foreignKey' => 'other_informations_id',
+        $this->belongsTo('OtherInformation', [
+            'foreignKey' => 'other_information_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Specialities', [
-            'foreignKey' => 'specialities_id',
+        $this->belongsTo('Speciality', [
+            'foreignKey' => 'speciality_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Departments', [
+            'foreignKey' => 'department_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -266,24 +270,24 @@ class EmployeesTable extends Table
             ->notEmptyString('graduate_id');
 
         $validator
-            ->integer('lnds_id')
-            ->notEmptyString('lnds_id');
+            ->integer('lnd_id')
+            ->notEmptyString('lnd_id');
 
         $validator
-            ->integer('organizations_id')
-            ->notEmptyString('organizations_id');
+            ->integer('organization_id')
+            ->notEmptyString('organization_id');
 
         $validator
-            ->integer('work_experiences_id')
-            ->notEmptyString('work_experiences_id');
+            ->integer('work_experience_id')
+            ->notEmptyString('work_experience_id');
 
         $validator
-            ->integer('other_informations_id')
-            ->notEmptyString('other_informations_id');
+            ->integer('other_information_id')
+            ->notEmptyString('other_information_id');
 
         $validator
-            ->integer('specialities_id')
-            ->notEmptyString('specialities_id');
+            ->integer('speciality_id')
+            ->notEmptyString('speciality_id');
 
         return $validator;
     }
@@ -303,11 +307,11 @@ class EmployeesTable extends Table
         $rules->add($rules->existsIn('vocational_id', 'Vocational'), ['errorField' => 'vocational_id']);
         $rules->add($rules->existsIn('college_id', 'College'), ['errorField' => 'college_id']);
         $rules->add($rules->existsIn('graduate_id', 'Graduate'), ['errorField' => 'graduate_id']);
-        $rules->add($rules->existsIn('lnds_id', 'Lnds'), ['errorField' => 'lnds_id']);
-        $rules->add($rules->existsIn('organizations_id', 'Organizations'), ['errorField' => 'organizations_id']);
-        $rules->add($rules->existsIn('work_experiences_id', 'WorkExperiences'), ['errorField' => 'work_experiences_id']);
-        $rules->add($rules->existsIn('other_informations_id', 'OtherInformations'), ['errorField' => 'other_informations_id']);
-        $rules->add($rules->existsIn('specialities_id', 'Specialities'), ['errorField' => 'specialities_id']);
+        $rules->add($rules->existsIn('lnd_id', 'Lnd'), ['errorField' => 'lnd_id']);
+        $rules->add($rules->existsIn('organization_id', 'Organization'), ['errorField' => 'organization_id']);
+        $rules->add($rules->existsIn('work_experience_id', 'WorkExperience'), ['errorField' => 'work_experience_id']);
+        $rules->add($rules->existsIn('other_information_id', 'OtherInformation'), ['errorField' => 'other_information_id']);
+        $rules->add($rules->existsIn('speciality_id', 'Speciality'), ['errorField' => 'speciality_id']);
 
         return $rules;
     }

@@ -9,8 +9,8 @@ use Cake\ORM\Entity;
  * WorkExperience Entity
  *
  * @property int $id
- * @property string|null $from
- * @property string|null $to
+ * @property string|null $start_from
+ * @property string|null $upto
  * @property string|null $position
  * @property int|null $department_id
  * @property string|null $monthly_salary
@@ -21,6 +21,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Department $department
+ * @property \App\Model\Entity\Employee[] $employees
  */
 class WorkExperience extends Entity
 {
@@ -34,8 +35,8 @@ class WorkExperience extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'from' => true,
-        'to' => true,
+        'start_from' => true,
+        'upto' => true,
         'position' => true,
         'department_id' => true,
         'monthly_salary' => true,
@@ -45,5 +46,6 @@ class WorkExperience extends Entity
         'created' => true,
         'modified' => true,
         'department' => true,
+        'employees' => true,
     ];
 }

@@ -4,45 +4,53 @@
  * @var iterable<\App\Model\Entity\Department> $departments
  */
 ?>
-<div class="departments index content">
-    <?= $this->Html->link(__('New Department'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Departments') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('department') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($departments as $department): ?>
-                <tr>
-                    <td><?= $this->Number->format($department->id) ?></td>
-                    <td><?= h($department->department) ?></td>
-                    <td><?= h($department->created) ?></td>
-                    <td><?= h($department->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $department->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $department->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $department->id], ['confirm' => __('Are you sure you want to delete # {0}?', $department->id)]) ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+<div class="col-12 my-2 d-flex">
+    <h1 class="mx-auto" style="font-family: 'Poppins', sans-serif;">Employee Management System</h1>
+</div>
+<div class="col-12 my-2 d-flex justify-content-end">
+</div>
+<div class="row">
+    <div class="col-11 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <?= $this->Flash->render() ?>
+                <button type="button" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#importModal" style="margin-right: 10px; margin-top: 7px;">
+                    Import
+                </button>
+                <button type="button" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#addModal" style="margin-right: 10px; margin-top: 7px;">
+                    New Department
+                </button>
+                <h5 class="mx-auto" style="margin-top: 10px">List of Departments</h5>
+            </div>
+            <div class="card-body">
+                <table class="display table table-hover table-bordered table-striped" id="departmentsTable">
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Check Box</th>
+                            <th>Department</th>
+                            <th>Created</th>
+                            <th>Modified</th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+<?php include 'import.php'; ?>
+<?= $this->Html->script('https://code.jquery.com/jquery-3.6.0.min.js', ['block' => true]) ?>
+<?= $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') ?>
+<?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') ?>
+<?= $this->Html->css('https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css', ['block' => true]) ?>
+<?= $this->Html->script('https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', ['block' => true]) ?>
+<?= $this->Html->script('departments.js', ['block' => true]) ?>
+<script>
+    var departments = <?= json_encode($departments) ?>;
+</script>
+<?= $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@11') ?>
+<?php include 'addmodal.php'; ?>
+<?php include 'editmodal.php'; ?>
+<?php include 'viewmodal.php'; ?>

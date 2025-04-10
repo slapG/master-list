@@ -11,8 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $college_name
  * @property string|null $basic_education
- * @property \Cake\I18n\FrozenDate|null $from
- * @property \Cake\I18n\FrozenDate|null $to
+ * @property \Cake\I18n\FrozenDate|null $start_from
+ * @property \Cake\I18n\FrozenDate|null $end_to
  * @property \Cake\I18n\FrozenDate|null $year_graduated
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -33,8 +33,8 @@ class College extends Entity
     protected $_accessible = [
         'college_name' => true,
         'basic_education' => true,
-        'from' => true,
-        'to' => true,
+        'start_from' => true,
+        'end_to' => true,
         'year_graduated' => true,
         'created' => true,
         'modified' => true,

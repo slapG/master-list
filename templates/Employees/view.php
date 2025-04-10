@@ -4,169 +4,565 @@
  * @var \App\Model\Entity\Employee $employee
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Employee'), ['action' => 'edit', $employee->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Employee'), ['action' => 'delete', $employee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Employees'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Employee'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<section class="content">
+      <div class="row">
+        <div class="col-md-11 my-2 mx-auto">
+          <div class="card">
+            <div class="card-header">
+            <?= $this->Form->create($employee) ?>
+            <h3 class="card-title"><?=__('Add Employee')?></h3>
+              <div class="card-tools">
+                <button type="button"  class="btn btn-tool float-right" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+            <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">I. Personal Information</h2>
+                </div>
+            <div class="row">
+                    <div class="col-md-3">
+                        <?= $this->Form->label('first_name') ?>
+                        <?= $this->Form->input('first_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('middle_name') ?>
+                        <?= $this->Form->input('middle_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('last_name') ?>
+                        <?= $this->Form->input('last_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->control('date_of_birth',[
+                            'type' => 'date',
+                            'label' => 'Date of Birth',
+                            'value' => $employee->date_of_birth ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('address') ?>
+                        <?= $this->Form->input('address', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('place_of_birth') ?>
+                        <?= $this->Form->input('place_of_birth', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <?= $this->Form->label('sex') ?>
+                        <?= $this->Form->input('sex', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('civil_status') ?>
+                        <?= $this->Form->input('civil_status', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label(ucwords('height (cm)')) ?>
+                        <?= $this->Form->input('height', [
+                            'class' => 'form-control',
+                            'type' => 'number',
+                            'disabled'
+                            ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label(ucwords('weight (kg)')) ?>
+                        <?= $this->Form->input('weight', [
+                            'class' => 'form-control',
+                            'type' => 'number',
+                            'disabled'
+                             ]) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('blood_type') ?>
+                        <?= $this->Form->input('blood_type', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('gsis_number') ?>
+                        <?= $this->Form->input('gsis_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('pagibig_number') ?>
+                        <?= $this->Form->input('pagibig_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('philhealth_number') ?>
+                        <?= $this->Form->input('philhealth_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('sss_number') ?>
+                        <?= $this->Form->input('sss_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('tin_number') ?>
+                        <?= $this->Form->input('tin_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('agency_employee_number') ?>
+                        <?= $this->Form->input('agency_employee_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('citizenship') ?>
+                        <?= $this->Form->input('citizenship', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('residential_address') ?>
+                        <?= $this->Form->input('residential_address', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('permanent_address') ?>
+                        <?= $this->Form->input('permanent_address', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('telephone_number') ?>
+                        <?= $this->Form->input('telephone_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('mobile_number') ?>
+                        <?= $this->Form->input('mobile_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('email') ?>
+                        <?= $this->Form->input('email', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                </div>
+              
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">II. Family Background</h2>
+                </div>
+
+          
+                <div class="row">
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.first_name', 'Spouse First Name') ?>
+                        <?= $this->Form->input('family_background.first_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.middle_name', 'Spouse Middle Name') ?>
+                        <?= $this->Form->input('family_background.middle_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.last_name', 'Spouse Last Name') ?>
+                        <?= $this->Form->input('family_background.last_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.occupation') ?>
+                        <?= $this->Form->input('family_background.occupation', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.employer_business_name') ?>
+                        <?= $this->Form->input('family_background.employer_business_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.business_address') ?>
+                        <?= $this->Form->input('family_background.business_address', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= $this->Form->label('family_background.telephone_number') ?>
+                        <?= $this->Form->input('family_background.telephone_number', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.father_surname') ?>
+                        <?= $this->Form->input('family_background.father_surname', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.father_first_name') ?>
+                        <?= $this->Form->input('family_background.father_first_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.father_middle_name') ?>
+                        <?= $this->Form->input('family_background.father_middle_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.mother_maiden_name') ?>
+                        <?= $this->Form->input('family_background.mother_maiden_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.mother_first_name') ?>
+                        <?= $this->Form->input('family_background.mother_first_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->label('family_background.mother_middle_name') ?>
+                        <?= $this->Form->input('family_background.mother_middle_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">III. Educational Background</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('elementary.elementary_name') ?>
+                        <?= $this->Form->input('elementary.elementary_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('elementary.basic_education') ?>
+                        <?= $this->Form->input('elementary.basic_education', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->elementary->start_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->elementary->end_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->elementary->year_graduated ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h3 class="text-2xl font-bold"></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('secondary.secondary_name') ?>
+                        <?= $this->Form->input('secondary.secondary_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('secondary.basic_education') ?>
+                        <?= $this->Form->input('secondary.basic_education', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->secondary->start_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->secondary->end_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->secondary->year_graduated ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h3 class="text-2xl font-bold"></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('vocational.vocational_name') ?>
+                        <?= $this->Form->input('vocational.vocational_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('vocational.basic_education') ?>
+                        <?= $this->Form->input('vocational.basic_education', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->vocational->start_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->vocational->end_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->vocational->year_graduated ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h3 class="text-2xl font-bold"></h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('college.college_name') ?>
+                        <?= $this->Form->input('college.college_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('college.basic_education') ?>
+                        <?= $this->Form->input('college.basic_education', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->college->start_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->college->end_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->college->year_graduated ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold"></h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('graduate.graduate_name') ?>
+                        <?= $this->Form->input('graduate.graduate_name', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('graduate.basic_education') ?>
+                        <?= $this->Form->input('graduate.basic_education', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Start From',[
+                            'type' => 'date',
+                            'label' => 'Start From',
+                            'value' => $employee->graduate->start_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('End TO',[
+                            'type' => 'date',
+                            'label' => 'End To',
+                            'value' => $employee->graduate->end_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-4">
+                    <?= $this->Form->control('Year Grauated',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->graduate->year_graduated ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">IV. Specialities</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.speciality_laws') ?>
+                        <?= $this->Form->input('speciality.speciality_laws', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.rating') ?>
+                        <?= $this->Form->input('speciality.rating', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Date Of Examination',[
+                            'type' => 'date',
+                            'label' => 'Date OF Examination',
+                            'value' => $employee->speciality->date_of_examination ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.place_of_examination') ?>
+                        <?= $this->Form->input('speciality.place_of_examination', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('speciality.license_number') ?>
+                        <?= $this->Form->input('speciality.license_number', ['class' => 'form-control', "disabled"]) ?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Date Of Validity',[
+                            'type' => 'date',
+                            'label' => 'Year Graduated',
+                            'value' => $employee->speciality->date_of_validity ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">V. Work Experiences</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->control('work_experience.start_from', [
+                            'type' => 'date', 
+                            'label' => 'Start From',
+                            'value' => $employee->work_experience->start_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                            ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('work_experience.upto', [
+                            'type' => 'date', 
+                            'label' => 'Up To',
+                            'value' => $employee->work_experience->upto ?? null,
+                            'class' => 'form-control', 'disabled'
+                            ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.position') ?>
+                        <?= $this->Form->input('work_experience.position', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.department_id') ?>
+                        <?= $this->Form->select('Departments', $departments, ['class' => 'form-control' , 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.monthly_salary') ?>
+                        <?= $this->Form->input('work_experience.monthly_salary', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.salary_grade') ?>
+                        <?= $this->Form->input('work_experience.salary_grade', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.status_of_appointment') ?>
+                        <?= $this->Form->input('work_experience.status_of_appointment', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('work_experience.government_service') ?>
+                        <?= $this->Form->input('work_experience.government_service', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">VI. Organizations</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('organization.name_of_organization') ?>
+                        <?= $this->Form->input('organization.name_of_organization', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Exclusive From',[
+                            'type' => 'date',
+                            'label' => 'Exclusive From',
+                            'value' => $employee->organization->exclusive_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                    <?= $this->Form->control('Exclusive To',[
+                            'type' => 'date',
+                            'label' => 'Exclusive To',
+                            'value' => $employee->organization->exclusive_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ])?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('organization.number_of_hours') ?>
+                        <?= $this->Form->input('organization.number_of_hours', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('organization.position') ?>
+                        <?= $this->Form->input('organization.position', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                </div>
+
+                
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">VII. Learning and Development</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.training_program') ?>
+                        <?= $this->Form->input('lnd.training_program', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('lnd.exclusive_from', [
+                            'type' => 'date',
+                            'label' => 'Exclusive From',
+                            'value' => $employee->lnd->exclusive_from ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('lnd.exclusive_to', [
+                            'type' => 'date',
+                            'label' => 'Exclusive To',
+                            'value' => $employee->lnd->exclusive_to ?? null,
+                            'class' => 'form-control', 'disabled'
+                        ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.number_of_hours') ?>
+                        <?= $this->Form->input('lnd.number_of_hours', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.type') ?>
+                        <?= $this->Form->input('lnd.type', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('lnd.conducted_by') ?>
+                        <?= $this->Form->input('lnd.conducted_by', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                </div>
+
+                <div class="p-4 text-left">
+                    <h2 class="text-2xl font-bold">VIII. Other Informations</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $this->Form->label('other_information.special_skill') ?>
+                        <?= $this->Form->input('other_information.special_skill', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->label('other_information.non_academic_distinction') ?>
+                        <?= $this->Form->input('other_information.non_academic_distinction', ['class' => 'form-control', 'disabled']) ?>
+                    </div>
+                </div>
+            <div class="card-body">
+            <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-primary float-right">Back</a>
+            <a href="<?= $this->Url->build(['action' => 'edit', $employee->id]) ?>" class="btn btn-warning float-right mr-2">Edit</a>
+            <?= $this->Form->end() ?>
+                </div>
+            </div>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="employees view content">
-            <h3><?= h($employee->first_name) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('First Name') ?></th>
-                    <td><?= h($employee->first_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Middle Name') ?></th>
-                    <td><?= h($employee->middle_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Last Name') ?></th>
-                    <td><?= h($employee->last_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Address') ?></th>
-                    <td><?= h($employee->address) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Place Of Birth') ?></th>
-                    <td><?= h($employee->place_of_birth) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Sex') ?></th>
-                    <td><?= h($employee->sex) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Civil Status') ?></th>
-                    <td><?= h($employee->civil_status) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Height') ?></th>
-                    <td><?= h($employee->height) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Weight') ?></th>
-                    <td><?= h($employee->weight) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Blood Type') ?></th>
-                    <td><?= h($employee->blood_type) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Gsis Number') ?></th>
-                    <td><?= h($employee->gsis_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Pagibig Number') ?></th>
-                    <td><?= h($employee->pagibig_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Philhealth Number') ?></th>
-                    <td><?= h($employee->philhealth_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Sss Number') ?></th>
-                    <td><?= h($employee->sss_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Tin Number') ?></th>
-                    <td><?= h($employee->tin_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Agency Employee Number') ?></th>
-                    <td><?= h($employee->agency_employee_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Citizenship') ?></th>
-                    <td><?= h($employee->citizenship) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Residential Address') ?></th>
-                    <td><?= h($employee->residential_address) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Permanent Address') ?></th>
-                    <td><?= h($employee->permanent_address) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Telephone Number') ?></th>
-                    <td><?= h($employee->telephone_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Mobile Number') ?></th>
-                    <td><?= h($employee->mobile_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Email') ?></th>
-                    <td><?= h($employee->email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Family Background') ?></th>
-                    <td><?= $employee->has('family_background') ? $this->Html->link($employee->family_background->family_background, ['controller' => 'FamilyBackground', 'action' => 'view', $employee->family_background->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Elementary') ?></th>
-                    <td><?= $employee->has('elementary') ? $this->Html->link($employee->elementary->id, ['controller' => 'Elementary', 'action' => 'view', $employee->elementary->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Secondary') ?></th>
-                    <td><?= $employee->has('secondary') ? $this->Html->link($employee->secondary->id, ['controller' => 'Secondary', 'action' => 'view', $employee->secondary->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Vocational') ?></th>
-                    <td><?= $employee->has('vocational') ? $this->Html->link($employee->vocational->id, ['controller' => 'Vocational', 'action' => 'view', $employee->vocational->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('College') ?></th>
-                    <td><?= $employee->has('college') ? $this->Html->link($employee->college->id, ['controller' => 'College', 'action' => 'view', $employee->college->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Graduate') ?></th>
-                    <td><?= $employee->has('graduate') ? $this->Html->link($employee->graduate->id, ['controller' => 'Graduate', 'action' => 'view', $employee->graduate->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Lnd') ?></th>
-                    <td><?= $employee->has('lnd') ? $this->Html->link($employee->lnd->id, ['controller' => 'Lnds', 'action' => 'view', $employee->lnd->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Organization') ?></th>
-                    <td><?= $employee->has('organization') ? $this->Html->link($employee->organization->id, ['controller' => 'Organizations', 'action' => 'view', $employee->organization->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Work Experience') ?></th>
-                    <td><?= $employee->has('work_experience') ? $this->Html->link($employee->work_experience->id, ['controller' => 'WorkExperiences', 'action' => 'view', $employee->work_experience->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Other Information') ?></th>
-                    <td><?= $employee->has('other_information') ? $this->Html->link($employee->other_information->id, ['controller' => 'OtherInformations', 'action' => 'view', $employee->other_information->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($employee->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Specialities Id') ?></th>
-                    <td><?= $this->Number->format($employee->specialities_id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Date Of Birth') ?></th>
-                    <td><?= h($employee->date_of_birth) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($employee->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($employee->modified) ?></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>

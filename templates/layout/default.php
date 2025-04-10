@@ -27,7 +27,7 @@ $cakeDescription = 'Expenses System';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake',]) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -39,8 +39,7 @@ $cakeDescription = 'Expenses System';
             <a href="<?= $this->Url->build('/') ?>"><span>Expense</span> System</a>
         </div>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="<?=$this->Url->build(['controller' => 'receipts', 'action' => 'index'])?>">Receipts</a>
-            <a target="_blank" rel="noopener" href="<?=$this->Url->build(['controller' => 'data' , 'action' => 'index'])?>">Data</a>
+
         </div>
     </nav>
     <main class="main">
@@ -51,5 +50,7 @@ $cakeDescription = 'Expenses System';
     </main>
     <footer>
     </footer>
+    <?= $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@11') ?>
+    
 </body>
 </html>

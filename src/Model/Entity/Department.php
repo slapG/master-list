@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\WorkExperience[] $work_experiences
+ * @property \App\Model\Entity\WorkExperience[] $work_experience
  */
 class Department extends Entity
 {
@@ -30,6 +30,6 @@ class Department extends Entity
         'department' => true,
         'created' => true,
         'modified' => true,
-        'work_experiences' => true,
+        'work_experience' => true,
     ];
 }

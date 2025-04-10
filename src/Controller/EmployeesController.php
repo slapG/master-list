@@ -11,6 +11,10 @@ namespace App\Controller;
  */
 class EmployeesController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        $this->viewBuilder()->setLayout('admin');
+    }
     /**
      * Index method
      *
@@ -19,7 +23,8 @@ class EmployeesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Specialities', 'Lnds', 'Organizations', 'WorkExperiences', 'OtherInformations'],
+            'limit' => 1000000000,
+            'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Lnd', 'Organization', 'WorkExperience', 'OtherInformation', 'Speciality'],
         ];
         $employees = $this->paginate($this->Employees);
 
@@ -35,11 +40,12 @@ class EmployeesController extends AppController
      */
     public function view($id = null)
     {
+        $this->loadModel('Departments');
         $employee = $this->Employees->get($id, [
-            'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Specialities', 'Lnds', 'Organizations', 'WorkExperiences', 'OtherInformations']
+            'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Lnd', 'Organization', 'WorkExperience', 'OtherInformation', 'Speciality'],
         ]);
-
-        $this->set(compact('employee'));
+        $departments = $this->Departments->find('list', ['limit' => 200])->all();
+        $this->set(compact('employee', 'departments'));
     }
 
     /**
@@ -55,11 +61,12 @@ class EmployeesController extends AppController
         $this->loadModel('Vocational');
         $this->loadModel('College');
         $this->loadModel('Graduate');
-        $this->loadModel('Lnds');
-        $this->loadModel('Organizations');
-        $this->loadModel('WorkExperiences');
-        $this->loadModel('OtherInformations');
-        $this->loadModel('Specialities');
+        $this->loadModel('Lnd');
+        $this->loadModel('Organization');
+        $this->loadModel('WorkExperience');
+        $this->loadModel('OtherInformation');
+        $this->loadModel('Speciality');
+        $this->loadModel('Departments');
 
         $employee = $this->Employees->newEmptyEntity();
         $familyBackground = $this->FamilyBackground->newEmptyEntity();
@@ -68,34 +75,34 @@ class EmployeesController extends AppController
         $vocational = $this->Vocational->newEmptyEntity();
         $college = $this->College->newEmptyEntity();
         $graduate = $this->Graduate->newEmptyEntity();
-        $lnds = $this->Lnds->newEmptyEntity();
-        $organizations = $this->Organizations->newEmptyEntity();
-        $workExperiences = $this->WorkExperiences->newEmptyEntity();
-        $otherInformations = $this->OtherInformations->newEmptyEntity();
-        $specialities = $this->Specialities->newEmptyEntity();
+        $lnd = $this->Lnd->newEmptyEntity();
+        $organization = $this->Organization->newEmptyEntity();
+        $workExperience = $this->WorkExperience->newEmptyEntity();
+        $otherInformation = $this->OtherInformation->newEmptyEntity();
+        $speciality = $this->Speciality->newEmptyEntity();
         
         if ($this->request->is('post')) {
             $data = $this->request->getData();
 
-            $specialities = $this->Specialities->patchEntity($specialities, $data['specialities']);
-            if($this->Specialities->save($specialities)){
-                $data['specialities_id'] = $specialities->id;
+            $speciality = $this->Speciality->patchEntity($speciality, $data['speciality']);
+            if($this->Speciality->save($speciality)){
+                $data['speciality_id'] = $speciality->id;
 
-                $otherInformations = $this->OtherInformations->patchEntity($otherInformations, $data['other_informations']);
-                if($this->OtherInformations->save($otherInformations)){
-                    $data['other_informations_id'] = $otherInformations->id;
+                $otherInformations = $this->OtherInformation->patchEntity($otherInformation, $data['other_information']);
+                if($this->OtherInformation->save($otherInformations)){
+                    $data['other_information_id'] = $otherInformations->id;
 
-                    $workExperiences = $this->WorkExperiences->patchEntity($workExperiences, $data['work_experiences']);
-                    if($this->WorkExperiences->save($workExperiences)){
-                        $data['work_experiences_id'] = $workExperiences->id;
+                    $workExperience = $this->WorkExperience->patchEntity($workExperience, $data['work_experience']);
+                    if($this->WorkExperience->save($workExperience)){
+                        $data['work_experience_id'] = $workExperience->id;
 
-                        $organizations = $this->Organizations->patchEntity($organizations, $data['organizations']);
-                        if($this->Organizations->save($organizations)){
-                            $data['organizations_id'] = $organizations->id;
+                        $organization = $this->Organization->patchEntity($organization, $data['organization']);
+                        if($this->Organization->save($organization)){
+                            $data['organization_id'] = $organization->id;
 
-                            $lnds = $this->Lnds->patchEntity($lnds, $data['lnds']);
-                            if($this->Lnds->save($lnds)){
-                                $data['lnds_id'] = $lnds->id;
+                            $lnd = $this->Lnd->patchEntity($lnd, $data['lnd']);
+                            if($this->Lnd->save($lnd)){
+                                $data['lnd_id'] = $lnd->id;
 
                                 $graduate = $this->Graduate->patchEntity($graduate, $data['graduate']);
                                 if($this->Graduate->save($graduate)){
@@ -123,7 +130,7 @@ class EmployeesController extends AppController
 
                                                         $employee = $this->Employees->patchEntity($employee, $data);
                                                         if ($this->Employees->save($employee)) {
-                                                            $this->Flash->success(__('The employee has been saved.'));
+                                                            $this->Flash->toastr_success(__(''));
                                                             return $this->redirect(['action' => 'index']);
                                                         }
                                                     }
@@ -145,12 +152,13 @@ class EmployeesController extends AppController
         $vocational = $this->Employees->Vocational->find('list', ['limit' => 200])->all();
         $college = $this->Employees->College->find('list', ['limit' => 200])->all();
         $graduate = $this->Employees->Graduate->find('list', ['limit' => 200])->all();
-        $specialities = $this->Employees->Specialities->find('list', ['limit' => 200])->all();
-        $lnds = $this->Employees->Lnds->find('list', ['limit' => 200])->all();
-        $organizations = $this->Employees->Organizations->find('list', ['limit' => 200])->all();
-        $workExperiences = $this->Employees->WorkExperiences->find('list', ['limit' => 200])->all();
-        $otherInformations = $this->Employees->OtherInformations->find('list', ['limit' => 200])->all();
-        $this->set(compact('employee', 'familyBackground', 'elementary', 'secondary', 'vocational', 'college', 'graduate', 'specialities', 'lnds', 'organizations', 'workExperiences', 'otherInformations'));
+        $lnd = $this->Employees->Lnd->find('list', ['limit' => 200])->all();
+        $organization = $this->Employees->Organization->find('list', ['limit' => 200])->all();
+        $workExperience = $this->Employees->WorkExperience->find('list', ['limit' => 200])->all();
+        $otherInformation = $this->Employees->OtherInformation->find('list', ['limit' => 200])->all();
+        $speciality = $this->Employees->Speciality->find('list', ['limit' => 200])->all();
+        $departments = $this->Employees->Departments->find('list', ['limit' => 200])->all();
+        $this->set(compact('employee', 'familyBackground', 'elementary', 'secondary', 'vocational', 'college', 'graduate', 'lnd', 'organization', 'workExperience', 'otherInformation', 'speciality', 'departments'));
     }
 
     /**
@@ -162,31 +170,48 @@ class EmployeesController extends AppController
      */
     public function edit($id = null)
     {
-        $employee = $this->Employees->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $employee = $this->Employees->patchEntity($employee, $this->request->getData());
-            if ($this->Employees->save($employee)) {
-                $this->Flash->success(__('The employee has been saved.'));
+        $this->loadModel('FamilyBackground');
+        $this->loadModel('Elementary');
+        $this->loadModel('Secondary');
+        $this->loadModel('Vocational');
+        $this->loadModel('College');
+        $this->loadModel('Graduate');
+        $this->loadModel('Lnd');
+        $this->loadModel('Organization');
+        $this->loadModel('WorkExperience');
+        $this->loadModel('OtherInformation');
+        $this->loadModel('Speciality');
+        $this->loadModel('Departments');
 
+        $employee = $this->Employees->get($id, [
+            'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Lnd', 'Organization', 'WorkExperience', 'OtherInformation', 'Speciality']
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+
+            $employee = $this->Employees->patchEntity($employee, $data);
+            
+            if ($this->Employees->save($employee)) {
+                $this->Flash->success(__('The employee has been updated.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The employee could not be saved. Please, try again.'));
+            $this->Flash->error(__('The employee could not be updated. Please, try again.'));
         }
+
         $familyBackground = $this->Employees->FamilyBackground->find('list', ['limit' => 200])->all();
         $elementary = $this->Employees->Elementary->find('list', ['limit' => 200])->all();
         $secondary = $this->Employees->Secondary->find('list', ['limit' => 200])->all();
         $vocational = $this->Employees->Vocational->find('list', ['limit' => 200])->all();
         $college = $this->Employees->College->find('list', ['limit' => 200])->all();
         $graduate = $this->Employees->Graduate->find('list', ['limit' => 200])->all();
-        $specialities = $this->Employees->Specialities->find('list', ['limit' => 200])->all();
-        $lnds = $this->Employees->Lnds->find('list', ['limit' => 200])->all();
-        $organizations = $this->Employees->Organizations->find('list', ['limit' => 200])->all();
-        $workExperiences = $this->Employees->WorkExperiences->find('list', ['limit' => 200])->all();
-        $otherInformations = $this->Employees->OtherInformations->find('list', ['limit' => 200])->all();
+        $lnd = $this->Employees->Lnd->find('list', ['limit' => 200])->all();
+        $organization = $this->Employees->Organization->find('list', ['limit' => 200])->all();
+        $workExperience = $this->Employees->WorkExperience->find('list', ['limit' => 200])->all();
+        $otherInformation = $this->Employees->OtherInformation->find('list', ['limit' => 200])->all();
+        $speciality = $this->Employees->Speciality->find('list', ['limit' => 200])->all();
         $departments = $this->Employees->Departments->find('list', ['limit' => 200])->all();
-        $this->set(compact('employee', 'familyBackground', 'elementary', 'secondary', 'vocational', 'college', 'graduate', 'specialities', 'lnds', 'organizations', 'workExperiences', 'otherInformations', 'departments'));
+        $this->set(compact('employee', 'familyBackground', 'elementary', 'secondary', 'vocational', 'college', 'graduate', 'lnd', 'organization', 'workExperience', 'otherInformation', 'speciality', 'departments'));
     }
 
     /**
@@ -198,6 +223,28 @@ class EmployeesController extends AppController
      */
     public function delete($id = null)
     {
+        $this->request->allowMethod(['post', 'delete']);  
+
+        // Attempt to fetch the employee data
+        $employee = $this->Employees->get($id);
+
+        if ($this->request->is('ajax')) {
+            if ($this->Employees->delete($employee)) {
+                // Return a success response
+                $this->response = $this->response->withType('json')
+                    ->withStringBody(json_encode(['status' => 'success', 'redirect' => true]));
+            } else {
+                // Return an error response
+                $this->response = $this->response->withType('json')
+                    ->withStringBody(json_encode(['status' => 'error', 'redirect' => false]));
+            }
+            return $this->response;
+        }
+    }
+
+
+    public function deletee($id = null)
+    {
         $this->request->allowMethod(['post', 'delete']);
         $employee = $this->Employees->get($id);
         if ($this->Employees->delete($employee)) {
@@ -205,7 +252,8 @@ class EmployeesController extends AppController
         } else {
             $this->Flash->error(__('The employee could not be deleted. Please, try again.'));
         }
-
         return $this->redirect(['action' => 'index']);
     }
+
+
 }

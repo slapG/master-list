@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+
 /**
  * Departments Controller
  *
@@ -11,6 +16,12 @@ namespace App\Controller;
  */
 class DepartmentsController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Allow unauthenticated actions
+        $this->viewBuilder()->setLayout('admin');
+    }
     /**
      * Index method
      *
@@ -18,8 +29,10 @@ class DepartmentsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'limit' => 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+        ];
         $departments = $this->paginate($this->Departments);
-
         $this->set(compact('departments'));
     }
 
@@ -33,7 +46,7 @@ class DepartmentsController extends AppController
     public function view($id = null)
     {
         $department = $this->Departments->get($id, [
-            'contain' => ['WorkExperiences'],
+            'contain' => ['WorkExperience'],
         ]);
 
         $this->set(compact('department'));
@@ -102,4 +115,41 @@ class DepartmentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+    public function import()
+    {
+        if ($this->request->is('post')) {
+            $file = $this->request->getData('excel_file');
+
+            if ($file && $file->getClientMediaType() === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+                $tmpPath = $file->getStream()->getMetadata('uri');
+                $spreadsheet = IOFactory::load($tmpPath);
+                $sheet = $spreadsheet->getActiveSheet();
+                $rows = $sheet->toArray();
+
+                unset($rows[0]);
+
+                $departmentsTable = $this->getTableLocator()->get('Departments');
+
+                foreach ($rows as $row) {
+                    $departmentName = trim($row[0]);
+
+                    if (!empty($departmentName)) {
+                        $department = $departmentsTable->newEntity([
+                            'department' => $departmentName
+                        ]);
+                        $departmentsTable->save($department);
+                    }
+                    return $this->response->withType('json')
+                    ->withStringBody(json_encode(['status' => 'success', 'message' => 'Departments imported successfully.']));
+                }
+                return $this->response->withType('json')
+                    ->withStringBody(json_encode(['status' => 'success', 'message' => 'Departments imported successfully.']));
+            } else {
+                $this->Flash->error('Please upload a valid .xlsx file.');
+            }
+        }
+    }
+
 }

@@ -12,6 +12,8 @@ use Cake\ORM\Entity;
  * @property string|null $special_skill
  * @property string|null $non_academic_distinction
  * @property string|null $membership
+ *
+ * @property \App\Model\Entity\Employee[] $employees
  */
 class OtherInformation extends Entity
 {
@@ -28,5 +30,6 @@ class OtherInformation extends Entity
         'special_skill' => true,
         'non_academic_distinction' => true,
         'membership' => true,
+        'employees' => true,
     ];
 }

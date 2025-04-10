@@ -64,7 +64,7 @@ class FamilyBackgroundTable extends Table
             ->scalar('family_background')
             ->maxLength('family_background', 255)
             ->requirePresence('family_background', 'create')
-            ->notEmptyString('family_background');
+            ->allowEmptyString('family_background');
 
         $validator
             ->scalar('spouse_name')

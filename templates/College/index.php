@@ -14,8 +14,8 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('college_name') ?></th>
                     <th><?= $this->Paginator->sort('basic_education') ?></th>
-                    <th><?= $this->Paginator->sort('from') ?></th>
-                    <th><?= $this->Paginator->sort('to') ?></th>
+                    <th><?= $this->Paginator->sort('start_from') ?></th>
+                    <th><?= $this->Paginator->sort('end_to') ?></th>
                     <th><?= $this->Paginator->sort('year_graduated') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
@@ -28,8 +28,8 @@
                     <td><?= $this->Number->format($college->id) ?></td>
                     <td><?= h($college->college_name) ?></td>
                     <td><?= h($college->basic_education) ?></td>
-                    <td><?= h($college->from) ?></td>
-                    <td><?= h($college->to) ?></td>
+                    <td><?= h($college->start_from) ?></td>
+                    <td><?= h($college->end_to) ?></td>
                     <td><?= h($college->year_graduated) ?></td>
                     <td><?= h($college->created) ?></td>
                     <td><?= h($college->modified) ?></td>
