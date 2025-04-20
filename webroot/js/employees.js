@@ -25,7 +25,7 @@ $(document).ready(function () {
             `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <a href="/master-list/employees/view/${employee.id}" class="btn btn-primary btn-sm me-1">View</a>
              <a href="/master-list/employees/edit/${employee.id}" class="btn btn-success  btn-sm me-1">Edit</a>
-             <a href="#" onclick="confirmDelete(${employee.id})" class="btn btn-danger  btn-sm me-1">Delete</a>
+             <a href="#" onclick="cconfirmDelete(${employee.id})" class="btn btn-danger  btn-sm me-1">Delete</a>
              </div>`
         ]).draw(false);
     });
