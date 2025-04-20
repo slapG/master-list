@@ -10,8 +10,8 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string|null $name_of_organization
- * @property \Cake\I18n\FrozenDate|null $exclusive_from
- * @property \Cake\I18n\FrozenDate|null $exclusive_to
+ * @property string|null $exclusive_from
+ * @property string|null $exclusive_to
  * @property string|null $number_of_hours
  * @property string|null $position
  * @property \Cake\I18n\FrozenTime $created

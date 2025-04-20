@@ -19,10 +19,10 @@
                 <?php
                     echo $this->Form->control('speciality_laws');
                     echo $this->Form->control('rating');
-                    echo $this->Form->control('date_of_examination', ['empty' => true]);
+                    echo $this->Form->control('date_of_examination');
                     echo $this->Form->control('place_of_examination');
                     echo $this->Form->control('license_number');
-                    echo $this->Form->control('date_of_validity', ['empty' => true]);
+                    echo $this->Form->control('date_of_validity');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

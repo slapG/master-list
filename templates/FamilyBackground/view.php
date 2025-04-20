@@ -91,6 +91,18 @@
                     <td><?= h($familyBackground->modified) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Siblings') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($familyBackground->siblings)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Bithdays') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($familyBackground->bithdays)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Employees') ?></h4>
                 <?php if (!empty($familyBackground->employees)) : ?>

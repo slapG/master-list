@@ -19,32 +19,8 @@
             <h3><?= h($lnd->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Training Program') ?></th>
-                    <td><?= h($lnd->training_program) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Number Of Hours') ?></th>
-                    <td><?= h($lnd->number_of_hours) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Type') ?></th>
-                    <td><?= h($lnd->type) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Conducted By') ?></th>
-                    <td><?= h($lnd->conducted_by) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($lnd->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Exclusive From') ?></th>
-                    <td><?= h($lnd->exclusive_from) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Exclusive To') ?></th>
-                    <td><?= h($lnd->exclusive_to) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>
@@ -55,6 +31,42 @@
                     <td><?= h($lnd->modified) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Training Program') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($lnd->training_program)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Exclusive From') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($lnd->exclusive_from)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Exclusive To') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($lnd->exclusive_to)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Number Of Hours') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($lnd->number_of_hours)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Type') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($lnd->type)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Conducted By') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($lnd->conducted_by)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Employees') ?></h4>
                 <?php if (!empty($lnd->employees)) : ?>

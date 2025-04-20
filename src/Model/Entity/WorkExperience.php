@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  * @property string|null $start_from
  * @property string|null $upto
  * @property string|null $position
+ * @property string $department_name
  * @property int|null $department_id
  * @property string|null $monthly_salary
  * @property string|null $salary_grade
@@ -38,6 +39,7 @@ class WorkExperience extends Entity
         'start_from' => true,
         'upto' => true,
         'position' => true,
+        'department_name' => true,
         'department_id' => true,
         'monthly_salary' => true,
         'salary_grade' => true,

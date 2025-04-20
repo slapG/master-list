@@ -63,7 +63,6 @@ class FamilyBackgroundTable extends Table
         $validator
             ->scalar('family_background')
             ->maxLength('family_background', 255)
-            ->requirePresence('family_background', 'create')
             ->allowEmptyString('family_background');
 
         $validator
@@ -109,38 +108,40 @@ class FamilyBackgroundTable extends Table
         $validator
             ->scalar('father_surname')
             ->maxLength('father_surname', 255)
-            ->requirePresence('father_surname', 'create')
-            ->notEmptyString('father_surname');
+            ->allowEmptyString('father_surname');
 
         $validator
             ->scalar('father_first_name')
             ->maxLength('father_first_name', 255)
-            ->requirePresence('father_first_name', 'create')
-            ->notEmptyString('father_first_name');
+            ->allowEmptyString('father_first_name');
 
         $validator
             ->scalar('father_middle_name')
             ->maxLength('father_middle_name', 255)
-            ->requirePresence('father_middle_name', 'create')
-            ->notEmptyString('father_middle_name');
+            ->allowEmptyString('father_middle_name');
 
         $validator
             ->scalar('mother_maiden_name')
             ->maxLength('mother_maiden_name', 255)
-            ->requirePresence('mother_maiden_name', 'create')
-            ->notEmptyString('mother_maiden_name');
+            ->allowEmptyString('mother_maiden_name');
 
         $validator
             ->scalar('mother_first_name')
             ->maxLength('mother_first_name', 255)
-            ->requirePresence('mother_first_name', 'create')
-            ->notEmptyString('mother_first_name');
+            ->allowEmptyString('mother_first_name');
 
         $validator
             ->scalar('mother_middle_name')
             ->maxLength('mother_middle_name', 255)
-            ->requirePresence('mother_middle_name', 'create')
-            ->notEmptyString('mother_middle_name');
+            ->allowEmptyString('mother_middle_name');
+
+        $validator
+            ->scalar('siblings')
+            ->allowEmptyString('siblings');
+
+        $validator
+            ->scalar('bithdays')
+            ->allowEmptyString('bithdays');
 
         return $validator;
     }

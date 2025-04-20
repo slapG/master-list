@@ -23,8 +23,8 @@
                 <legend><?= __('Edit Organization') ?></legend>
                 <?php
                     echo $this->Form->control('name_of_organization');
-                    echo $this->Form->control('exclusive_from', ['empty' => true]);
-                    echo $this->Form->control('exclusive_to', ['empty' => true]);
+                    echo $this->Form->control('exclusive_from');
+                    echo $this->Form->control('exclusive_to');
                     echo $this->Form->control('number_of_hours');
                     echo $this->Form->control('position');
                 ?>

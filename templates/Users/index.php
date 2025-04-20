@@ -20,7 +20,7 @@
                 <h5  class="mx-auto" style="margin-top: 10px">List of Users</h5>
               </div>
               <div class="card-body">
-                <table class="display table table-hover table-bordered table-striped" id="usersTable">
+                <table class="display table table-hover table-responsive table-bordered table-striped w-100" id="usersTable">
                 <thead>
                 <tr>
                     <th>Count</th>

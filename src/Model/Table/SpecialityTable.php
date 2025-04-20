@@ -62,31 +62,27 @@ class SpecialityTable extends Table
     {
         $validator
             ->scalar('speciality_laws')
-            ->maxLength('speciality_laws', 255)
             ->allowEmptyString('speciality_laws');
 
         $validator
             ->scalar('rating')
-            ->maxLength('rating', 255)
             ->allowEmptyString('rating');
 
         $validator
-            ->date('date_of_examination')
-            ->allowEmptyDate('date_of_examination');
+            ->scalar('date_of_examination')
+            ->allowEmptyString('date_of_examination');
 
         $validator
             ->scalar('place_of_examination')
-            ->maxLength('place_of_examination', 255)
             ->allowEmptyString('place_of_examination');
 
         $validator
             ->scalar('license_number')
-            ->maxLength('license_number', 255)
             ->allowEmptyString('license_number');
 
         $validator
-            ->date('date_of_validity')
-            ->allowEmptyDate('date_of_validity');
+            ->scalar('date_of_validity')
+            ->allowEmptyString('date_of_validity');
 
         return $validator;
     }

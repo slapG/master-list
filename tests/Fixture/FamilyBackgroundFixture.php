@@ -41,8 +41,10 @@ class FamilyBackgroundFixture extends TestFixture
                 'mother_maiden_name' => 'Lorem ipsum dolor sit amet',
                 'mother_first_name' => 'Lorem ipsum dolor sit amet',
                 'mother_middle_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2025-04-02 08:27:47',
-                'modified' => '2025-04-02 08:27:47',
+                'siblings' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'bithdays' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'created' => '2025-04-15 02:29:44',
+                'modified' => '2025-04-15 02:29:44',
             ],
         ];
         parent::init();

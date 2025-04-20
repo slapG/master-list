@@ -12,12 +12,6 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('speciality_laws') ?></th>
-                    <th><?= $this->Paginator->sort('rating') ?></th>
-                    <th><?= $this->Paginator->sort('date_of_examination') ?></th>
-                    <th><?= $this->Paginator->sort('place_of_examination') ?></th>
-                    <th><?= $this->Paginator->sort('license_number') ?></th>
-                    <th><?= $this->Paginator->sort('date_of_validity') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -27,12 +21,6 @@
                 <?php foreach ($speciality as $speciality): ?>
                 <tr>
                     <td><?= $this->Number->format($speciality->id) ?></td>
-                    <td><?= h($speciality->speciality_laws) ?></td>
-                    <td><?= h($speciality->rating) ?></td>
-                    <td><?= h($speciality->date_of_examination) ?></td>
-                    <td><?= h($speciality->place_of_examination) ?></td>
-                    <td><?= h($speciality->license_number) ?></td>
-                    <td><?= h($speciality->date_of_validity) ?></td>
                     <td><?= h($speciality->created) ?></td>
                     <td><?= h($speciality->modified) ?></td>
                     <td class="actions">

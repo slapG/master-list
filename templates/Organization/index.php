@@ -12,11 +12,6 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name_of_organization') ?></th>
-                    <th><?= $this->Paginator->sort('exclusive_from') ?></th>
-                    <th><?= $this->Paginator->sort('exclusive_to') ?></th>
-                    <th><?= $this->Paginator->sort('number_of_hours') ?></th>
-                    <th><?= $this->Paginator->sort('position') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -26,11 +21,6 @@
                 <?php foreach ($organization as $organization): ?>
                 <tr>
                     <td><?= $this->Number->format($organization->id) ?></td>
-                    <td><?= h($organization->name_of_organization) ?></td>
-                    <td><?= h($organization->exclusive_from) ?></td>
-                    <td><?= h($organization->exclusive_to) ?></td>
-                    <td><?= h($organization->number_of_hours) ?></td>
-                    <td><?= h($organization->position) ?></td>
                     <td><?= h($organization->created) ?></td>
                     <td><?= h($organization->modified) ?></td>
                     <td class="actions">

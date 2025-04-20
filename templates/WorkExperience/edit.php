@@ -26,6 +26,7 @@
                     echo $this->Form->control('start_from');
                     echo $this->Form->control('upto');
                     echo $this->Form->control('position');
+                    echo $this->Form->control('department_name');
                     echo $this->Form->control('department_id', ['options' => $departments, 'empty' => true]);
                     echo $this->Form->control('monthly_salary');
                     echo $this->Form->control('salary_grade');

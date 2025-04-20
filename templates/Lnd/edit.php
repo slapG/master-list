@@ -23,8 +23,8 @@
                 <legend><?= __('Edit Lnd') ?></legend>
                 <?php
                     echo $this->Form->control('training_program');
-                    echo $this->Form->control('exclusive_from', ['empty' => true]);
-                    echo $this->Form->control('exclusive_to', ['empty' => true]);
+                    echo $this->Form->control('exclusive_from');
+                    echo $this->Form->control('exclusive_to');
                     echo $this->Form->control('number_of_hours');
                     echo $this->Form->control('type');
                     echo $this->Form->control('conducted_by');

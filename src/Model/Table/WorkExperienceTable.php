@@ -66,18 +66,20 @@ class WorkExperienceTable extends Table
     {
         $validator
             ->scalar('start_from')
-            ->maxLength('start_from', 255)
             ->allowEmptyString('start_from');
 
         $validator
             ->scalar('upto')
-            ->maxLength('upto', 255)
             ->allowEmptyString('upto');
 
         $validator
             ->scalar('position')
-            ->maxLength('position', 255)
             ->allowEmptyString('position');
+
+        $validator
+            ->scalar('department_name')
+            ->requirePresence('department_name', 'create')
+            ->notEmptyString('department_name');
 
         $validator
             ->integer('department_id')
@@ -85,22 +87,18 @@ class WorkExperienceTable extends Table
 
         $validator
             ->scalar('monthly_salary')
-            ->maxLength('monthly_salary', 255)
             ->allowEmptyString('monthly_salary');
 
         $validator
             ->scalar('salary_grade')
-            ->maxLength('salary_grade', 255)
             ->allowEmptyString('salary_grade');
 
         $validator
             ->scalar('status_of_appointment')
-            ->maxLength('status_of_appointment', 255)
             ->allowEmptyString('status_of_appointment');
 
         $validator
             ->scalar('government_service')
-            ->maxLength('government_service', 255)
             ->allowEmptyString('government_service');
 
         return $validator;

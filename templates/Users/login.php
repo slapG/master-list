@@ -30,7 +30,7 @@
         <!-- Login Form -->
         <div class="card card-outline card-danger shadow">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Employee </b>System</a>
+                <a href="#" class="h1"><b>Employee </b>System</a>
             </div>
             <?= $this->Form->create() ?>
             <div class="card-body">
@@ -39,7 +39,7 @@
                 <div class="input-group mb-3">
                     <?= $this->Form->text('email', [
                         'class' => 'form-control', 
-                        'placeholder' => 'Email', 
+                        'placeholder' => 'Enter Email', 
                         'id' => 'email', 
                         'required' => true
                     ]); ?>
@@ -53,7 +53,7 @@
                 <div class="input-group mb-3">
                     <?= $this->Form->password('password', [
                         'class' => 'form-control', 
-                        'placeholder' => 'Password', 
+                        'placeholder' => ' Enter Password', 
                         'id' => 'password', 
                         'required' => true
                     ]); ?>

@@ -62,7 +62,6 @@ class DepartmentsTable extends Table
     {
         $validator
             ->scalar('department')
-            ->maxLength('department', 255)
             ->allowEmptyString('department');
 
         return $validator;

@@ -20,9 +20,9 @@ class DepartmentsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'department' => 'Lorem ipsum dolor sit amet',
-                'created' => '2025-04-02 08:27:46',
-                'modified' => '2025-04-02 08:27:46',
+                'department' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'created' => '2025-04-19 02:26:37',
+                'modified' => '2025-04-19 02:26:37',
             ],
         ];
         parent::init();

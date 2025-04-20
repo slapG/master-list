@@ -19,28 +19,8 @@
             <h3><?= h($organization->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Name Of Organization') ?></th>
-                    <td><?= h($organization->name_of_organization) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Number Of Hours') ?></th>
-                    <td><?= h($organization->number_of_hours) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Position') ?></th>
-                    <td><?= h($organization->position) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($organization->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Exclusive From') ?></th>
-                    <td><?= h($organization->exclusive_from) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Exclusive To') ?></th>
-                    <td><?= h($organization->exclusive_to) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>
@@ -51,6 +31,36 @@
                     <td><?= h($organization->modified) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Name Of Organization') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($organization->name_of_organization)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Exclusive From') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($organization->exclusive_from)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Exclusive To') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($organization->exclusive_to)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Number Of Hours') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($organization->number_of_hours)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Position') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($organization->position)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Employees') ?></h4>
                 <?php if (!empty($organization->employees)) : ?>

@@ -19,32 +19,8 @@
             <h3><?= h($speciality->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Speciality Laws') ?></th>
-                    <td><?= h($speciality->speciality_laws) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Rating') ?></th>
-                    <td><?= h($speciality->rating) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Place Of Examination') ?></th>
-                    <td><?= h($speciality->place_of_examination) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('License Number') ?></th>
-                    <td><?= h($speciality->license_number) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($speciality->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Date Of Examination') ?></th>
-                    <td><?= h($speciality->date_of_examination) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Date Of Validity') ?></th>
-                    <td><?= h($speciality->date_of_validity) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>
@@ -55,6 +31,42 @@
                     <td><?= h($speciality->modified) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Speciality Laws') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($speciality->speciality_laws)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Rating') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($speciality->rating)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Date Of Examination') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($speciality->date_of_examination)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Place Of Examination') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($speciality->place_of_examination)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('License Number') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($speciality->license_number)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Date Of Validity') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($speciality->date_of_validity)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Employees') ?></h4>
                 <?php if (!empty($speciality->employees)) : ?>

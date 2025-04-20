@@ -12,7 +12,7 @@
             <img src="<?= $this->Url->assetUrl('/img/stgocitys.png'); ?>" alt="City Hall Logo" 
                  class="brand-image img-circle elevation-3" 
                  style="width: 40px; height: 40px; margin-right: 10px;">
-                <span style="color: white; font-size: 20px; font-family: 'Roboto', sans-serif;">City Hall EMS</span>
+                <span style="color: white; font-size: 24px; font-family: 'Roboto', sans-serif;margin-right: 70px">City Hall EMS</span>
             </a>
 
         <!-- Navbar Toggler -->
@@ -26,7 +26,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="<?= $this->Url->build([ 'controller' => 'Dashboard', 'action' => 'index']) ?>" class="nav-link">
-                      <i class=" nav-icon fa fa-user-tie" style="margin-left: 70px"></i> Dashboard</a>
+                      <i class=" nav-icon fa fa-user-tie"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build('/employees') ?>" class="nav-link">

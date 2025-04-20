@@ -19,36 +19,8 @@
             <h3><?= h($workExperience->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Start From') ?></th>
-                    <td><?= h($workExperience->start_from) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Upto') ?></th>
-                    <td><?= h($workExperience->upto) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Position') ?></th>
-                    <td><?= h($workExperience->position) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Department') ?></th>
-                    <td><?= $workExperience->has('department') ? $this->Html->link($workExperience->department->id, ['controller' => 'Departments', 'action' => 'view', $workExperience->department->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Monthly Salary') ?></th>
-                    <td><?= h($workExperience->monthly_salary) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Salary Grade') ?></th>
-                    <td><?= h($workExperience->salary_grade) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Status Of Appointment') ?></th>
-                    <td><?= h($workExperience->status_of_appointment) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Government Service') ?></th>
-                    <td><?= h($workExperience->government_service) ?></td>
+                    <td><?= $workExperience->has('department') ? $this->Html->link($workExperience->department->department, ['controller' => 'Departments', 'action' => 'view', $workExperience->department->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>
@@ -63,6 +35,54 @@
                     <td><?= h($workExperience->modified) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Start From') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->start_from)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Upto') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->upto)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Position') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->position)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Department Name') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->department_name)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Monthly Salary') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->monthly_salary)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Salary Grade') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->salary_grade)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Status Of Appointment') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->status_of_appointment)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Government Service') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($workExperience->government_service)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Employees') ?></h4>
                 <?php if (!empty($workExperience->employees)) : ?>

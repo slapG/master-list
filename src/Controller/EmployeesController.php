@@ -54,6 +54,98 @@ class EmployeesController extends AppController
         $employee = $this->Employees->get($id, [
             'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Lnd', 'Organization', 'WorkExperience', 'OtherInformation', 'Speciality'],
         ]);
+
+        if (!empty($employee->family_background->siblings)) {
+            $employee->family_background->siblings = json_decode($employee->family_background->siblings, true);
+        }
+        if (!empty($employee->family_background->bithdays)) {
+            $employee->family_background->bithdays = json_decode($employee->family_background->bithdays, true);
+        }
+        if (!empty($employee->speciality->speciality_laws)) {
+            $employee->speciality->speciality_laws = json_decode($employee->speciality->speciality_laws, true);
+        }
+        if (!empty($employee->speciality->rating)) {
+            $employee->speciality->rating = json_decode($employee->speciality->rating, true);
+        }
+        if (!empty($employee->speciality->date_of_examination)) {
+            $employee->speciality->date_of_examination = json_decode($employee->speciality->date_of_examination, true);
+        }
+        if (!empty($employee->speciality->place_of_examination)) {
+            $employee->speciality->place_of_examination = json_decode($employee->speciality->place_of_examination, true);
+        }
+        if (!empty($employee->speciality->license_number)) {
+            $employee->speciality->license_number = json_decode($employee->speciality->license_number, true);
+        }
+        if (!empty($employee->speciality->date_of_validity)) {
+            $employee->speciality->date_of_validity = json_decode($employee->speciality->date_of_validity, true);
+        }
+        if (!empty($employee->organization->name_of_organization)) {
+            $employee->organization->name_of_organization = json_decode($employee->organization->name_of_organization, true);
+        }
+        if (!empty($employee->organization->exclusive_from)) {
+            $employee->organization->exclusive_from = json_decode($employee->organization->exclusive_from, true);
+        }
+        if (!empty($employee->organization->exclusive_to)) {
+            $employee->organization->exclusive_to = json_decode($employee->organization->exclusive_to, true);
+        }
+        if (!empty($employee->organization->number_of_hours)) {
+            $employee->organization->number_of_hours = json_decode($employee->organization->number_of_hours, true);
+        }
+        if (!empty($employee->organization->position)) {
+            $employee->organization->position = json_decode($employee->organization->position, true);
+        }
+        if (!empty($employee->lnd->training_program)) {
+            $employee->lnd->training_program = json_decode($employee->lnd->training_program, true);
+        }
+        if (!empty($employee->lnd->exclusive_from)) {
+            $employee->lnd->exclusive_from = json_decode($employee->lnd->exclusive_from, true);
+        }
+        if (!empty($employee->lnd->exclusive_to)) {
+            $employee->lnd->exclusive_to = json_decode($employee->lnd->exclusive_to, true);
+        }
+        if (!empty($employee->lnd->number_of_hours)) {
+            $employee->lnd->number_of_hours = json_decode($employee->lnd->number_of_hours, true);
+        }
+        if (!empty($employee->lnd->type)) {
+            $employee->lnd->type = json_decode($employee->lnd->type, true);
+        }
+        if (!empty($employee->lnd->conducted_by)) {
+            $employee->lnd->conducted_by = json_decode($employee->lnd->conducted_by, true);
+        }
+        if (!empty($employee->other_information->special_skill)) {
+            $employee->other_information->special_skill = json_decode($employee->other_information->special_skill, true);
+        }
+        if (!empty($employee->other_information->non_academic_distinction)) {
+            $employee->other_information->non_academic_distinction = json_decode($employee->other_information->non_academic_distinction, true);
+        }
+        if (!empty($employee->other_information->membership)) {
+            $employee->other_information->membership = json_decode($employee->other_information->membership, true);
+        }
+        if (!empty($employee->work_experience->start_from)){
+            $employee->work_experience->start_from = json_decode($employee->work_experience->start_from, true);
+        }
+        if (!empty($employee->work_experience->upto)){
+            $employee->work_experience->upto = json_decode($employee->work_experience->upto, true);
+        }
+        if (!empty($employee->work_experience->position)){
+            $employee->work_experience->position = json_decode($employee->work_experience->position, true);
+        }
+        if (!empty($employee->work_experience->department_name)){
+            $employee->work_experience->department_name = json_decode($employee->work_experience->department_name, true);
+        }
+        if (!empty($employee->work_experience->monthly_salary)){
+            $employee->work_experience->monthly_salary = json_decode($employee->work_experience->monthly_salary, true);
+        }
+        if (!empty($employee->work_experience->salary_grade)){
+            $employee->work_experience->salary_grade = json_decode($employee->work_experience->salary_grade, true);
+        }
+        if (!empty($employee->work_experience->status_of_appointment)){
+            $employee->work_experience->status_of_appointment = json_decode($employee->work_experience->status_of_appointment, true);
+        }
+        if (!empty($employee->work_experience->government_service)){
+            $employee->work_experience->government_service = json_decode($employee->work_experience->government_service, true);
+        }
+
         $departments = $this->Departments->find('list', ['limit' => 200])->all();
         $this->set(compact('employee', 'departments'));
     }
@@ -93,6 +185,99 @@ class EmployeesController extends AppController
         
         if ($this->request->is('post')) {
             $data = $this->request->getData();
+
+            // Ensure department_id is properly set
+
+            if (!empty($data['family_background']['siblings']) && is_array($data['family_background']['siblings'])) {
+                $data['family_background']['siblings'] = json_encode(array_filter($data['family_background']['siblings']));
+            }
+            if (!empty($data['family_background']['bithdays']) && is_array($data['family_background']['bithdays'])) {
+                $data['family_background']['bithdays'] = json_encode(array_filter($data['family_background']['bithdays']));
+            }
+            if (!empty($data['speciality']['speciality_laws']) && is_array($data['speciality']['speciality_laws'])){
+                $data['speciality']['speciality_laws'] = json_encode(array_filter($data['speciality']['speciality_laws']));
+            }
+            if (!empty($data['speciality']['rating']) && is_array($data['speciality']['rating'])){
+                $data['speciality']['rating'] = json_encode(array_filter($data['speciality']['rating']));
+            }
+            if (!empty($data['speciality']['date_of_examination']) && is_array($data['speciality']['date_of_examination'])){
+                $data['speciality']['date_of_examination'] = json_encode(array_filter($data['speciality']['date_of_examination']));
+            }
+            if (!empty($data['speciality']['place_of_examination']) && is_array($data['speciality']['place_of_examination'])){
+                $data['speciality']['place_of_examination'] = json_encode(array_filter($data['speciality']['place_of_examination']));
+            }
+            if (!empty($data['speciality']['license_number']) && is_array($data['speciality']['license_number'])){
+                $data['speciality']['license_number'] = json_encode(array_filter($data['speciality']['license_number']));
+            }
+            if (!empty($data['speciality']['date_of_validity']) && is_array($data['speciality']['date_of_validity'])){
+                $data['speciality']['date_of_validity'] = json_encode(array_filter($data['speciality']['date_of_validity']));
+            }
+            if (!empty($data['organization']['name_of_organization']) && is_array($data['organization']['name_of_organization'])){
+                $data['organization']['name_of_organization'] = json_encode(array_filter($data['organization']['name_of_organization']));
+            }
+            if (!empty($data['organization']['exclusive_from']) && is_array($data['organization']['exclusive_from'])){
+                $data['organization']['exclusive_from'] = json_encode(array_filter($data['organization']['exclusive_from']));
+            }
+            if (!empty($data['organization']['exclusive_to']) && is_array($data['organization']['exclusive_to'])){
+                $data['organization']['exclusive_to'] = json_encode(array_filter($data['organization']['exclusive_to']));
+            }
+            if (!empty($data['organization']['number_of_hours']) && is_array($data['organization']['number_of_hours'])){
+                $data['organization']['number_of_hours'] = json_encode(array_filter($data['organization']['number_of_hours']));
+            }
+            if (!empty($data['organization']['position']) && is_array($data['organization']['position'])){
+                $data['organization']['position'] = json_encode(array_filter($data['organization']['position']));
+            }
+            if (!empty($data['lnd']['training_program']) && is_array($data['lnd']['training_program'])){
+                $data['lnd']['training_program'] = json_encode(array_filter($data['lnd']['training_program']));
+            }
+            if (!empty($data['lnd']['exclusive_from']) && is_array($data['lnd']['exclusive_from'])){
+                $data['lnd']['exclusive_from'] = json_encode(array_filter($data['lnd']['exclusive_from']));
+            }
+            if (!empty($data['lnd']['exclusive_to']) && is_array($data['lnd']['exclusive_to'])){
+                $data['lnd']['exclusive_to'] = json_encode(array_filter($data['lnd']['exclusive_to']));
+            }
+            if (!empty($data['lnd']['number_of_hours']) && is_array($data['lnd']['number_of_hours'])){
+                $data['lnd']['number_of_hours'] = json_encode(array_filter($data['lnd']['number_of_hours']));
+            }
+            if (!empty($data['lnd']['type']) && is_array($data['lnd']['type'])){
+                $data['lnd']['type'] = json_encode(array_filter($data['lnd']['type']));
+            }
+            if (!empty($data['lnd']['conducted_by']) && is_array($data['lnd']['conducted_by'])){
+                $data['lnd']['conducted_by'] = json_encode(array_filter($data['lnd']['conducted_by']));
+            }
+            if (!empty($data['other_information']['special_skill']) && is_array($data['other_information']['special_skill'])){
+                $data['other_information']['special_skill'] = json_encode($data['other_information']['special_skill']);
+            }
+            if (!empty($data['other_information']['non_academic_distinction']) && is_array($data['other_information']['non_academic_distinction'])){
+                $data['other_information']['non_academic_distinction'] = json_encode($data['other_information']['non_academic_distinction']);
+            }
+            if (!empty($data['other_information']['membership']) && is_array($data['other_information']['membership'])){
+                $data['other_information']['membership'] = json_encode($data['other_information']['membership']);
+            }
+            if (!empty($data['work_experience']['start_from']) && is_array($data['work_experience']['start_from'])){
+                $data['work_experience']['start_from'] = json_encode(array_filter($data['work_experience']['start_from']));
+            }
+            if (!empty($data['work_experience']['upto']) && is_array($data['work_experience']['upto'])){
+                $data['work_experience']['upto'] = json_encode(array_filter($data['work_experience']['upto']));
+            }
+            if (!empty($data['work_experience']['position']) && is_array($data['work_experience']['position'])){
+                $data['work_experience']['position'] = json_encode(array_filter($data['work_experience']['position']));
+            }
+            if (!empty($data['work_experience']['department_name']) && is_array($data['work_experience']['department_name'])){
+                $data['work_experience']['department_name'] = json_encode(array_filter($data['work_experience']['department_name']));
+            }
+            if (!empty($data['work_experience']['monthly_salary']) && is_array($data['work_experience']['monthly_salary'])){
+                $data['work_experience']['monthly_salary'] = json_encode(array_filter($data['work_experience']['monthly_salary']));
+            }
+            if (!empty($data['work_experience']['salary_grade']) && is_array($data['work_experience']['salary_grade'])){
+                $data['work_experience']['salary_grade'] = json_encode(array_filter($data['work_experience']['salary_grade']));
+            }
+            if (!empty($data['work_experience']['status_of_appointment']) && is_array($data['work_experience']['status_of_appointment'])){
+                $data['work_experience']['status_of_appointment'] = json_encode(array_filter($data['work_experience']['status_of_appointment']));
+            }
+            if (!empty($data['work_experience']['government_service']) && is_array($data['work_experience']['government_service'])){
+                $data['work_experience']['government_service'] = json_encode(array_filter($data['work_experience']['government_service']));
+            }
 
             $speciality = $this->Speciality->patchEntity($speciality, $data['speciality']);
             if($this->Speciality->save($speciality)){
@@ -140,7 +325,7 @@ class EmployeesController extends AppController
 
                                                         $employee = $this->Employees->patchEntity($employee, $data);
                                                         if ($this->Employees->save($employee)) {
-                                                            $this->Flash->toastr_success(__(''));
+                                                            $this->Flash->toastr_success(__('The employee has been saved successfully.'));
                                                             return $this->redirect(['action' => 'index']);
                                                         }
                                                     }
@@ -197,15 +382,197 @@ class EmployeesController extends AppController
             'contain' => ['FamilyBackground', 'Elementary', 'Secondary', 'Vocational', 'College', 'Graduate', 'Lnd', 'Organization', 'WorkExperience', 'OtherInformation', 'Speciality']
         ]);
 
+        if (!empty($employee->family_background->siblings)) {
+            $employee->family_background->siblings = json_decode($employee->family_background->siblings, true);
+        }
+        if (!empty($employee->family_background->bithdays)) {
+            $employee->family_background->bithdays = json_decode($employee->family_background->bithdays, true);
+        }
+        if (!empty($employee->speciality->speciality_laws)) {
+            $employee->speciality->speciality_laws = json_decode($employee->speciality->speciality_laws, true);
+        }
+        if (!empty($employee->speciality->rating)) {
+            $employee->speciality->rating = json_decode($employee->speciality->rating, true);
+        }
+        if (!empty($employee->speciality->date_of_examination)) {
+            $employee->speciality->date_of_examination = json_decode($employee->speciality->date_of_examination, true);
+        }
+        if (!empty($employee->speciality->place_of_examination)) {
+            $employee->speciality->place_of_examination = json_decode($employee->speciality->place_of_examination, true);
+        }
+        if (!empty($employee->speciality->license_number)) {
+            $employee->speciality->license_number = json_decode($employee->speciality->license_number, true);
+        }
+        if (!empty($employee->speciality->date_of_validity)) {
+            $employee->speciality->date_of_validity = json_decode($employee->speciality->date_of_validity, true);
+        }
+        if (!empty($employee->organization->name_of_organization)) {
+            $employee->organization->name_of_organization = json_decode($employee->organization->name_of_organization, true);
+        }
+        if (!empty($employee->organization->exclusive_from)) {
+            $employee->organization->exclusive_from = json_decode($employee->organization->exclusive_from, true);
+        }
+        if (!empty($employee->organization->exclusive_to)) {
+            $employee->organization->exclusive_to = json_decode($employee->organization->exclusive_to, true);
+        }
+        if (!empty($employee->organization->number_of_hours)) {
+            $employee->organization->number_of_hours = json_decode($employee->organization->number_of_hours, true);
+        }
+        if (!empty($employee->organization->position)) {
+            $employee->organization->position = json_decode($employee->organization->position, true);
+        }
+        if (!empty($employee->lnd->training_program)) {
+            $employee->lnd->training_program = json_decode($employee->lnd->training_program, true);
+        }
+        if (!empty($employee->lnd->exclusive_from)) {
+            $employee->lnd->exclusive_from = json_decode($employee->lnd->exclusive_from, true);
+        }
+        if (!empty($employee->lnd->exclusive_to)) {
+            $employee->lnd->exclusive_to = json_decode($employee->lnd->exclusive_to, true);
+        }
+        if (!empty($employee->lnd->number_of_hours)) {
+            $employee->lnd->number_of_hours = json_decode($employee->lnd->number_of_hours, true);
+        }
+        if (!empty($employee->lnd->type)) {
+            $employee->lnd->type = json_decode($employee->lnd->type, true);
+        }
+        if (!empty($employee->lnd->conducted_by)) {
+            $employee->lnd->conducted_by = json_decode($employee->lnd->conducted_by, true);
+        }
+        if (!empty($employee->other_information->special_skill)) {
+            $employee->other_information->special_skill = json_decode($employee->other_information->special_skill, true);
+        }
+        if (!empty($employee->other_information->non_academic_distinction)) {
+            $employee->other_information->non_academic_distinction = json_decode($employee->other_information->non_academic_distinction, true);
+        }
+        if (!empty($employee->other_information->membership)) {
+            $employee->other_information->membership = json_decode($employee->other_information->membership, true);
+        }
+        if (!empty($employee->work_experience->start_from)){
+            $employee->work_experience->start_from = json_decode($employee->work_experience->start_from, true);
+        }
+        if (!empty($employee->work_experience->upto)){
+            $employee->work_experience->upto = json_decode($employee->work_experience->upto, true);
+        }
+        if (!empty($employee->work_experience->position)){
+            $employee->work_experience->position = json_decode($employee->work_experience->position, true);
+        }
+        if (!empty($employee->work_experience->department_name)){
+            $employee->work_experience->department_name = json_decode($employee->work_experience->department_name, true);
+        }
+        if (!empty($employee->work_experience->monthly_salary)){
+            $employee->work_experience->monthly_salary = json_decode($employee->work_experience->monthly_salary, true);
+        }
+        if (!empty($employee->work_experience->salary_grade)){
+            $employee->work_experience->salary_grade = json_decode($employee->work_experience->salary_grade, true);
+        }
+        if (!empty($employee->work_experience->status_of_appointment)){
+            $employee->work_experience->status_of_appointment = json_decode($employee->work_experience->status_of_appointment, true);
+        }
+        if (!empty($employee->work_experience->government_service)){
+            $employee->work_experience->government_service = json_decode($employee->work_experience->government_service, true);
+        }
+        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
 
-            $employee = $this->Employees->patchEntity($employee, $data);
-            
-            if ($this->Employees->save($employee)) {
-                $this->Flash->success(__('The employee has been updated.'));
-                return $this->redirect(['action' => 'index']);
+            if (!empty($data['family_background']['siblings']) && is_array($data['family_background']['siblings'])) {
+                $data['family_background']['siblings'] = json_encode(array_filter($data['family_background']['siblings']));
             }
+            if (!empty($data['family_background']['bithdays']) && is_array($data['family_background']['bithdays'])) {
+                $data['family_background']['bithdays'] = json_encode(array_filter($data['family_background']['bithdays']));
+            }
+            if (!empty($data['speciality']['speciality_laws']) && is_array($data['speciality']['speciality_laws'])){
+                $data['speciality']['speciality_laws'] = json_encode(array_filter($data['speciality']['speciality_laws']));
+            }
+            if (!empty($data['speciality']['rating']) && is_array($data['speciality']['rating'])){
+                $data['speciality']['rating'] = json_encode(array_filter($data['speciality']['rating']));
+            }
+            if (!empty($data['speciality']['date_of_examination']) && is_array($data['speciality']['date_of_examination'])){
+                $data['speciality']['date_of_examination'] = json_encode(array_filter($data['speciality']['date_of_examination']));
+            }
+            if (!empty($data['speciality']['place_of_examination']) && is_array($data['speciality']['place_of_examination'])){
+                $data['speciality']['place_of_examination'] = json_encode(array_filter($data['speciality']['place_of_examination']));
+            }
+            if (!empty($data['speciality']['license_number']) && is_array($data['speciality']['license_number'])){
+                $data['speciality']['license_number'] = json_encode(array_filter($data['speciality']['license_number']));
+            }
+            if (!empty($data['speciality']['date_of_validity']) && is_array($data['speciality']['date_of_validity'])){
+                $data['speciality']['date_of_validity'] = json_encode(array_filter($data['speciality']['date_of_validity']));
+            }
+            if (!empty($data['organization']['name_of_organization']) && is_array($data['organization']['name_of_organization'])){
+                $data['organization']['name_of_organization'] = json_encode(array_filter($data['organization']['name_of_organization']));
+            }
+            if (!empty($data['organization']['exclusive_from']) && is_array($data['organization']['exclusive_from'])){
+                $data['organization']['exclusive_from'] = json_encode(array_filter($data['organization']['exclusive_from']));
+            }
+            if (!empty($data['organization']['exclusive_to']) && is_array($data['organization']['exclusive_to'])){
+                $data['organization']['exclusive_to'] = json_encode(array_filter($data['organization']['exclusive_to']));
+            }
+            if (!empty($data['organization']['number_of_hours']) && is_array($data['organization']['number_of_hours'])){
+                $data['organization']['number_of_hours'] = json_encode(array_filter($data['organization']['number_of_hours']));
+            }
+            if (!empty($data['organization']['position']) && is_array($data['organization']['position'])){
+                $data['organization']['position'] = json_encode(array_filter($data['organization']['position']));
+            }
+            if (!empty($data['lnd']['training_program']) && is_array($data['lnd']['training_program'])){
+                $data['lnd']['training_program'] = json_encode(array_filter($data['lnd']['training_program']));
+            }
+            if (!empty($data['lnd']['exclusive_from']) && is_array($data['lnd']['exclusive_from'])){
+                $data['lnd']['exclusive_from'] = json_encode(array_filter($data['lnd']['exclusive_from']));
+            }
+            if (!empty($data['lnd']['exclusive_to']) && is_array($data['lnd']['exclusive_to'])){
+                $data['lnd']['exclusive_to'] = json_encode(array_filter($data['lnd']['exclusive_to']));
+            }
+            if (!empty($data['lnd']['number_of_hours']) && is_array($data['lnd']['number_of_hours'])){
+                $data['lnd']['number_of_hours'] = json_encode(array_filter($data['lnd']['number_of_hours']));
+            }
+            if (!empty($data['lnd']['type']) && is_array($data['lnd']['type'])){
+                $data['lnd']['type'] = json_encode(array_filter($data['lnd']['type']));
+            }
+            if (!empty($data['lnd']['conducted_by']) && is_array($data['lnd']['conducted_by'])){
+                $data['lnd']['conducted_by'] = json_encode(array_filter($data['lnd']['conducted_by']));
+            }
+            if (!empty($data['other_information']['special_skill']) && is_array($data['other_information']['special_skill'])){
+                $data['other_information']['special_skill'] = json_encode($data['other_information']['special_skill']);
+            }
+            if (!empty($data['other_information']['non_academic_distinction']) && is_array($data['other_information']['non_academic_distinction'])){
+                $data['other_information']['non_academic_distinction'] = json_encode($data['other_information']['non_academic_distinction']);
+            }
+            if (!empty($data['other_information']['membership']) && is_array($data['other_information']['membership'])){
+                $data['other_information']['membership'] = json_encode($data['other_information']['membership']);
+            }
+            if (!empty($data['work_experience']['start_from']) && is_array($data['work_experience']['start_from'])){
+                $data['work_experience']['start_from'] = json_encode(array_filter($data['work_experience']['start_from']));
+            }
+            if (!empty($data['work_experience']['upto']) && is_array($data['work_experience']['upto'])){
+                $data['work_experience']['upto'] = json_encode(array_filter($data['work_experience']['upto']));
+            }
+            if (!empty($data['work_experience']['position']) && is_array($data['work_experience']['position'])){
+                $data['work_experience']['position'] = json_encode(array_filter($data['work_experience']['position']));
+            }
+            if (!empty($data['work_experience']['department_name']) && is_array($data['work_experience']['department_name'])){
+                $data['work_experience']['department_name'] = json_encode(array_filter($data['work_experience']['department_name']));
+            }
+            if (!empty($data['work_experience']['monthly_salary']) && is_array($data['work_experience']['monthly_salary'])){
+                $data['work_experience']['monthly_salary'] = json_encode(array_filter($data['work_experience']['monthly_salary']));
+            }
+            if (!empty($data['work_experience']['salary_grade']) && is_array($data['work_experience']['salary_grade'])){
+                $data['work_experience']['salary_grade'] = json_encode(array_filter($data['work_experience']['salary_grade']));
+            }
+            if (!empty($data['work_experience']['status_of_appointment']) && is_array($data['work_experience']['status_of_appointment'])){
+                $data['work_experience']['status_of_appointment'] = json_encode(array_filter($data['work_experience']['status_of_appointment']));
+            }
+            if (!empty($data['work_experience']['government_service']) && is_array($data['work_experience']['government_service'])){
+                $data['work_experience']['government_service'] = json_encode(array_filter($data['work_experience']['government_service']));
+            }
+                $employee = $this->Employees->patchEntity($employee, $data);
+                if ($this->Employees->save($employee)) {
+                    $this->Flash->success(__('The employee has been updated.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+
             $this->Flash->error(__('The employee could not be updated. Please, try again.'));
         }
 

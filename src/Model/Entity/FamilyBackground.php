@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * FamilyBackground Entity
  *
  * @property int $id
- * @property string $family_background
+ * @property string|null $family_background
  * @property string|null $spouse_name
  * @property string|null $first_name
  * @property string|null $middle_name
@@ -18,12 +18,14 @@ use Cake\ORM\Entity;
  * @property string|null $employer_business_name
  * @property string|null $business_address
  * @property string|null $telephone_number
- * @property string $father_surname
- * @property string $father_first_name
- * @property string $father_middle_name
- * @property string $mother_maiden_name
- * @property string $mother_first_name
- * @property string $mother_middle_name
+ * @property string|null $father_surname
+ * @property string|null $father_first_name
+ * @property string|null $father_middle_name
+ * @property string|null $mother_maiden_name
+ * @property string|null $mother_first_name
+ * @property string|null $mother_middle_name
+ * @property string|null $siblings
+ * @property string|null $bithdays
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -56,6 +58,8 @@ class FamilyBackground extends Entity
         'mother_maiden_name' => true,
         'mother_first_name' => true,
         'mother_middle_name' => true,
+        'siblings' => true,
+        'bithdays' => true,
         'created' => true,
         'modified' => true,
         'employees' => true,

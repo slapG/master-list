@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var table = $('#departmentsTable').DataTable({
-        pageLength: 50, // Set the number of rows to display per page (e.g., 50)
+        pageLength: 50, 
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]], 
         columnDefs: [
             { width: '5%', targets: 0, className: 'text-center' },
             { width: '5%', targets: 1, className: 'text-center' },

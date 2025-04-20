@@ -11,10 +11,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $speciality_laws
  * @property string|null $rating
- * @property \Cake\I18n\FrozenDate|null $date_of_examination
+ * @property string|null $date_of_examination
  * @property string|null $place_of_examination
  * @property string|null $license_number
- * @property \Cake\I18n\FrozenDate|null $date_of_validity
+ * @property string|null $date_of_validity
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *

@@ -62,25 +62,22 @@ class OrganizationTable extends Table
     {
         $validator
             ->scalar('name_of_organization')
-            ->maxLength('name_of_organization', 255)
             ->allowEmptyString('name_of_organization');
 
         $validator
-            ->date('exclusive_from')
-            ->allowEmptyDate('exclusive_from');
+            ->scalar('exclusive_from')
+            ->allowEmptyString('exclusive_from');
 
         $validator
-            ->date('exclusive_to')
-            ->allowEmptyDate('exclusive_to');
+            ->scalar('exclusive_to')
+            ->allowEmptyString('exclusive_to');
 
         $validator
             ->scalar('number_of_hours')
-            ->maxLength('number_of_hours', 255)
             ->allowEmptyString('number_of_hours');
 
         $validator
             ->scalar('position')
-            ->maxLength('position', 255)
             ->allowEmptyString('position');
 
         return $validator;

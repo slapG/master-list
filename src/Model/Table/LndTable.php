@@ -62,30 +62,26 @@ class LndTable extends Table
     {
         $validator
             ->scalar('training_program')
-            ->maxLength('training_program', 255)
             ->allowEmptyString('training_program');
 
         $validator
-            ->date('exclusive_from')
-            ->allowEmptyDate('exclusive_from');
+            ->scalar('exclusive_from')
+            ->allowEmptyString('exclusive_from');
 
         $validator
-            ->date('exclusive_to')
-            ->allowEmptyDate('exclusive_to');
+            ->scalar('exclusive_to')
+            ->allowEmptyString('exclusive_to');
 
         $validator
             ->scalar('number_of_hours')
-            ->maxLength('number_of_hours', 255)
             ->allowEmptyString('number_of_hours');
 
         $validator
             ->scalar('type')
-            ->maxLength('type', 255)
             ->allowEmptyString('type');
 
         $validator
             ->scalar('conducted_by')
-            ->maxLength('conducted_by', 255)
             ->allowEmptyString('conducted_by');
 
         return $validator;

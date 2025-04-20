@@ -37,6 +37,8 @@
                     echo $this->Form->control('mother_maiden_name');
                     echo $this->Form->control('mother_first_name');
                     echo $this->Form->control('mother_middle_name');
+                    echo $this->Form->control('siblings');
+                    echo $this->Form->control('bithdays');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

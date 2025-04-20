@@ -12,12 +12,6 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('training_program') ?></th>
-                    <th><?= $this->Paginator->sort('exclusive_from') ?></th>
-                    <th><?= $this->Paginator->sort('exclusive_to') ?></th>
-                    <th><?= $this->Paginator->sort('number_of_hours') ?></th>
-                    <th><?= $this->Paginator->sort('type') ?></th>
-                    <th><?= $this->Paginator->sort('conducted_by') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -27,12 +21,6 @@
                 <?php foreach ($lnd as $lnd): ?>
                 <tr>
                     <td><?= $this->Number->format($lnd->id) ?></td>
-                    <td><?= h($lnd->training_program) ?></td>
-                    <td><?= h($lnd->exclusive_from) ?></td>
-                    <td><?= h($lnd->exclusive_to) ?></td>
-                    <td><?= h($lnd->number_of_hours) ?></td>
-                    <td><?= h($lnd->type) ?></td>
-                    <td><?= h($lnd->conducted_by) ?></td>
                     <td><?= h($lnd->created) ?></td>
                     <td><?= h($lnd->modified) ?></td>
                     <td class="actions">
