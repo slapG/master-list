@@ -22,6 +22,15 @@ class EmployeesController extends AppController
      */
     public function index()
     {
+        $this->loadModel('Departments');
+
+        $departmentId = $this->request->getQuery('department');
+
+        $conditions = [];
+        if (!empty($departmentId)) {
+            $conditions['WorkExperience.department_id'] = $departmentId; 
+        }
+
         $employees = $this->Employees->find('all', [
             'contain' => [
                 'FamilyBackground', 
@@ -34,11 +43,14 @@ class EmployeesController extends AppController
                 'Organization', 
                 'WorkExperience', 
                 'OtherInformation', 
-                'Speciality'
-            ]
+                'Speciality',
+            ],
+            'conditions' => $conditions
         ])->all();
 
-        $this->set(compact('employees'));
+        $departments = $this->Employees->Departments->find('list', ['limit' => 200])->all();
+
+        $this->set(compact('employees', 'departments'));       
     }
 
     /**

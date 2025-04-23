@@ -133,8 +133,7 @@ class UsersController extends AppController
         if ($result && $result->isValid()) {
             $this->Authentication->logout();
 
-            return $this->response->withType('json')
-                ->withStringBody(json_encode(['status' => 'success', 'redirect' => true]));
+            return $this->redirect(['action' => 'login']);
         }
     }
     public function profile()

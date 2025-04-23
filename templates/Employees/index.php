@@ -17,6 +17,17 @@
                 <a href="<?=$this->Url->build(['action' => 'add'])?>" class="btn btn-outline-primary float-right" style="margin-top: 7px">
                     New Employee
                 </a>
+                <div class="col-md-2 float-right">
+                <?= $this->Form->create(null, ['type' => 'get']) ?>
+                <?= $this->Form->select('department', ['' => 'All Department'] + $departments->toArray(), [
+                    'value' => $this->request->getQuery('department'),
+                    'empty' => false,
+                    'class' => 'form-control float-right',
+                    'style' => 'margin-top: 7px',
+                    'onchange' => 'handleDepartmentChange(this)'
+                ]) ?>
+                <?= $this->Form->end() ?>
+                </div>
                 <h5  class="mx-auto" style="margin-top: 10px">List of Employee</h5>
               </div>
               <div class="card-body">
@@ -54,3 +65,13 @@
 </script>
 <?= $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@11') ?>
 <?= $this->Html->script('login.js') ?>
+<script>
+function handleDepartmentChange(select) {
+    const departmentId = select.value;
+    if (departmentId === '') {
+        window.location.href = '/master-list/employees';
+    } else {
+        select.form.submit();
+    }
+}
+</script>

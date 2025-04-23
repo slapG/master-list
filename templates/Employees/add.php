@@ -66,69 +66,76 @@
                             'empty' => 'Select your Gender'
                             ]) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('civil_status') ?>
                         <?= $this->Form->input('civil_status', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('height') ?>
                         <?= $this->Form->input('height', ['class' => 'form-control', 'type' => 'number']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('weight') ?>
                         <?= $this->Form->input('weight', ['class' => 'form-control', 'type' => 'number']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('blood_type') ?>
                         <?= $this->Form->input('blood_type', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('gsis_number') ?>
                         <?= $this->Form->input('gsis_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('pagibig_number') ?>
                         <?= $this->Form->input('pagibig_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('philhealth_number') ?>
                         <?= $this->Form->input('philhealth_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('sss_number') ?>
                         <?= $this->Form->input('sss_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('tin_number') ?>
                         <?= $this->Form->input('tin_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?= $this->Form->label('agency_employee_number') ?>
                         <?= $this->Form->input('agency_employee_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?= $this->Form->label('citizenship') ?>
                         <?= $this->Form->input('citizenship', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <?= $this->Form->label('residential_address') ?>
                         <?= $this->Form->input('residential_address', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <?= $this->Form->label('permanent_address') ?>
                         <?= $this->Form->input('permanent_address', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?= $this->Form->label('telephone_number') ?>
                         <?= $this->Form->input('telephone_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?= $this->Form->label('mobile_number') ?>
                         <?= $this->Form->input('mobile_number', ['class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?= $this->Form->label('email') ?>
                         <?= $this->Form->input('email', ['class' => 'form-control']) ?>
+                    </div>
+                    <div class="col-md-12">
+                        <?= $this->Form->label('Department / Office') ?>
+                        <?= $this->Form->select('work_experience.department_id', $departments, [
+                            'class' => 'form-control',
+                            'empty' => ' Select Department '
+                        ]) ?>
                     </div>
                 </div>
               

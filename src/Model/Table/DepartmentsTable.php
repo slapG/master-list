@@ -50,6 +50,9 @@ class DepartmentsTable extends Table
         $this->hasMany('WorkExperience', [
             'foreignKey' => 'department_id',
         ]);
+
+        $this->hasMany('Employees');
+
     }
 
     /**

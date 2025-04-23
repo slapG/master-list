@@ -76,12 +76,10 @@ $cakeDescription = 'City Hall : Employee Management System';
         '/adminlte/plugins/summernote/summernote-bs4.min.js',
         '/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js',
         '/adminlte/dist/js/adminlte.js',
-        '/adminlte/dist/js/demo.js',
         '/adminlte/dist/js/pages/dashboard.js',
         '/adminlte/plugins/jquery/jquery.min.js',
         '/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js',
         '/adminlte/dist/js/adminlte.min.js',
-        '/adminlte/dist/js/demo.js',
         '/adminlte/plugins/datatables/jquery.dataTables.js',
         'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js',
         'https://cdn.jsdelivr.net/npm/sweetalert2@11'

@@ -1,5 +1,4 @@
 <?= $this->Html->css('custom')?>
-<!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__bounce" src="<?= $this->Url->assetUrl('/img/stgocitys.png'); ?>" alt="AdminLTELogo" height="200" width="200">
 </div>
@@ -41,6 +40,7 @@
                         <i class="nav-icon fa fa-building"></i> Departments
                     </a>
                 </li>
+                
             </ul>
             <!-- Right Navbar Links -->
             <ul class="navbar-nav ml-auto">
@@ -52,6 +52,13 @@
             </ul>
         </div>
     </div>
+    <ul class="navbar-nav mr-4">
+        <li class="nav-item">
+            <button class="nav-link bg-transparent border-0" id="darkModeToggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon" id="modeIcon"></i>
+            </button>
+        </li>
+    </ul>    
 </nav>
 <!-- /.navbar -->
 
@@ -74,4 +81,7 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+    
+    <?= $this->Html->script('dark-mode-toggle.js') ?>
+    
     <!-- /.content-header -->

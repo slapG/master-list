@@ -20,13 +20,7 @@ $(document).ready(function () {
             new Date(department.created).toLocaleDateString('en-US'),
             new Date(department.modified).toLocaleDateString('en-US'),
             `<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-primary btn-sm me-1 viewUserBtn"
-                    data-id="${department.id}"
-                    data-department="${department.department}"
-                    data-toggle="modal"
-                    data-target="#viewModal">
-                    view
-                </button>
+                <a href="/master-list/employees/" class="btn btn-primary btn-sm me-1">View</a>
                 <button type="button" class="btn btn-success btn-sm me-1 editUserBtn"
                     data-id="${department.id}"
                     data-department="${department.department}"

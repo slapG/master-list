@@ -4,80 +4,52 @@
  * @var \App\Model\Entity\Department $department
  */
 ?>
+<div class="col-12 my-2 d-flex">
+    <h1  class="mx-auto" style="font-family: 'Poppins', sans-serif;">Employee Management System</h1>
+    </div>
+<div class="col-12 my-2 d-flex justify-content-end">
+    </div>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Department'), ['action' => 'edit', $department->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Department'), ['action' => 'delete', $department->id], ['confirm' => __('Are you sure you want to delete # {0}?', $department->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Departments'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Department'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="departments view content">
-            <h3><?= h($department->id) ?></h3>
-            <table>
+          <div class="col-11 mx-auto">
+            <div class="card shadow">
+              <div class="card-header">
+                <?= $this->Flash->render()?>
+                <a href="<?=$this->Url->build(['action' => 'add'])?>" class="btn btn-outline-primary float-right" style="margin-top: 7px">
+                    New Employee
+                </a>
+                <h5  class="mx-auto" style="margin-top: 10px">List of Employee in <?php echo $departments->department ?></h5>
+              </div>
+              <div class="card-body">
+              <table class="display table table-hover table-responsive table-bordered table-striped" id="employeesTable">
+              <thead>
                 <tr>
-                    <th><?= __('Department') ?></th>
-                    <td><?= h($department->department) ?></td>
+                    <th>Count</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Telephone Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Created</th>
+                    <th>Modified</th>
+                    <th class="actions"><?= __('Actions') ?></th>
                 </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($department->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($department->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($department->modified) ?></td>
-                </tr>
+            </thead>
+            <tbody></tbody>
             </table>
-            <div class="related">
-                <h4><?= __('Related Work Experience') ?></h4>
-                <?php if (!empty($department->work_experience)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Start From') ?></th>
-                            <th><?= __('Upto') ?></th>
-                            <th><?= __('Position') ?></th>
-                            <th><?= __('Department Id') ?></th>
-                            <th><?= __('Monthly Salary') ?></th>
-                            <th><?= __('Salary Grade') ?></th>
-                            <th><?= __('Status Of Appointment') ?></th>
-                            <th><?= __('Government Service') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($department->work_experience as $workExperience) : ?>
-                        <tr>
-                            <td><?= h($workExperience->id) ?></td>
-                            <td><?= h($workExperience->start_from) ?></td>
-                            <td><?= h($workExperience->upto) ?></td>
-                            <td><?= h($workExperience->position) ?></td>
-                            <td><?= h($workExperience->department_id) ?></td>
-                            <td><?= h($workExperience->monthly_salary) ?></td>
-                            <td><?= h($workExperience->salary_grade) ?></td>
-                            <td><?= h($workExperience->status_of_appointment) ?></td>
-                            <td><?= h($workExperience->government_service) ?></td>
-                            <td><?= h($workExperience->created) ?></td>
-                            <td><?= h($workExperience->modified) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'WorkExperience', 'action' => 'view', $workExperience->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'WorkExperience', 'action' => 'edit', $workExperience->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'WorkExperience', 'action' => 'delete', $workExperience->id], ['confirm' => __('Are you sure you want to delete # {0}?', $workExperience->id)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
+<?= $this->Html->script('https://code.jquery.com/jquery-3.6.0.min.js', ['block' => true]) ?>
+<?= $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') ?>
+<?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') ?>
+<?= $this->Html->css('https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css', ['block' => true]) ?>
+<?= $this->Html->script('https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', ['block' => true]) ?>
+<?= $this->Html->script('employees.js', ['block' => true]) ?>
+<script>
+    var employees = <?= json_encode($employees) ?>;
+</script>
+<?= $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@11') ?>
+<?= $this->Html->script('login.js') ?>

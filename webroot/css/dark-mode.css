@@ -1,0 +1,17 @@
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  
+  /* Dark mode styles */
+  .nav .body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  /* Slide-fade effect */
+  body.transitioning {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  

@@ -18,7 +18,7 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <h3><?= h($departments)?></h3>
+            <h3><?= h($departmentsCount)?></h3>
             <p>Total Department</p>
           </div>
           <div class="icon">
@@ -81,10 +81,27 @@
     </div>
   </div>
 </div>
+<div class="col-11 mx-auto">
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <div class="card shadow">
+        <div class="card-header">
+          <h3 class="card-title">Employees Per Department</h3>
+        </div>
+        <div class="card-body">
+          <canvas id="departmentChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
-  const genderData = <?= json_encode($genderData) ?>; 
-  const employeeAddedData = <?= json_encode($employeeAddedData) ?>;
+    const genderData = <?= json_encode($genderData) ?>;
+    const employeeAddedData = <?= json_encode($employeeAddedData) ?>;
+    const departments = <?= json_encode($departments) ?>;
+    const employeeCounts = <?= json_encode($employeeCounts) ?>;
 </script>
 <?= $this->Html->script('dashboard.js')?>
 
