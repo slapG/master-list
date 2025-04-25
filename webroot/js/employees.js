@@ -55,6 +55,15 @@ $(document).ready(function () {
     }, 1000);
 });
 
+function handleDepartmentChange(select) {
+    const departmentId = select.value;
+    if (departmentId === '') {
+        window.location.href = '/master-list/employees';
+    } else {
+        select.form.submit();
+    }
+}
+
 function confirmDelete(id) {
     Swal.fire({
         title: "Are you sure?",

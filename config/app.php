@@ -88,7 +88,7 @@ return [
      */
     'Asset' => [
         //'timestamp' => true,
-        // 'cacheTime' => '+1 year'
+        'cacheTime' => '+1 year'
     ],
 
     /*
@@ -420,5 +420,9 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+    ],
+
+    'route' => [
+        'cache' => true
     ],
 ];

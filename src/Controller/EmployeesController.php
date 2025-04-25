@@ -337,7 +337,6 @@ class EmployeesController extends AppController
 
                                                         $employee = $this->Employees->patchEntity($employee, $data);
                                                         if ($this->Employees->save($employee)) {
-                                                            $this->Flash->toastr_success(__('The employee has been saved successfully.'));
                                                             return $this->redirect(['action' => 'index']);
                                                         }
                                                     }

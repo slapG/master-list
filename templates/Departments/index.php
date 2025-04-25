@@ -53,4 +53,3 @@
 <?= $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@11') ?>
 <?php include 'addmodal.php'; ?>
 <?php include 'editmodal.php'; ?>
-<?php include 'viewmodal.php'; ?>

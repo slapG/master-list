@@ -54,7 +54,7 @@
         </div>
     </div>
 </div>
-<?= $this->Html->script('https://code.jquery.com/jquery-3.6.0.min.js', ['block' => true]) ?>
+<?= $this->Html->script('/Jquery/jquery-3.6.0.min.js', ['block' => true]) ?>
 <?= $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') ?>
 <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') ?>
 <?= $this->Html->css('https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css', ['block' => true]) ?>
@@ -65,13 +65,4 @@
 </script>
 <?= $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@11') ?>
 <?= $this->Html->script('login.js') ?>
-<script>
-function handleDepartmentChange(select) {
-    const departmentId = select.value;
-    if (departmentId === '') {
-        window.location.href = '/master-list/employees';
-    } else {
-        select.form.submit();
-    }
-}
-</script>
+
